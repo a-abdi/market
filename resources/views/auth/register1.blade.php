@@ -21,10 +21,10 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="http://192.168.43.83:81/login">Login</a>
+                                <a class="nav-link" href="http://192.168.43.83:81/login1">Login</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="http://192.168.43.83:81/register">Register</a>
+                                    <a class="nav-link" href="http://192.168.43.83:81/register1">Register</a>
                             </li>
                     </ul>
                 </div>
@@ -38,7 +38,8 @@
                     <div class="card">
                         <div class="card-header">Register</div>
                         <div class="card-body">
-                            <form method="POST" action="http://192.168.43.83:81/register">                          
+                            <form method="POST" action="/register1">  
+                                @csrf                        
                                 <div class="form-group row">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                                     <div class="col-md-6">
