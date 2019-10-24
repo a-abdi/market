@@ -30,4 +30,11 @@ Route::post('/register1','Auth1Controller@auth_user');
 Route::post('/login1','Auth1Controller@login_user');
 
 Route::get('/register2','Auth1Controller@register2_user');
+
+Route::post('/register2','Auth1Controller@auth_register2');
+
+Route::get('/login2','Auth1Controller@login2_user');
+
+Route::post('/login2','Auth1Controller@auth_login2');
+
     

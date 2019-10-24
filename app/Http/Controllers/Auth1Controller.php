@@ -16,6 +16,9 @@ class Auth1Controller extends Controller
     public function register2_user(){
         return view('auth.register2');
     }
+    public function login2_user(){
+        return view('auth.login2');
+    }
     public function login_index()
     {
         return view('auth.login1');
@@ -31,6 +34,38 @@ class Auth1Controller extends Controller
             return view('auth.register1');
         }
         
+    }
+    public function auth_register2(Request $request){
+        $login_res['status']=false;
+        if(!$request->filled('frist-name')){
+            $login_res['ms']='Enter Your First Name';    
+            return view('auth.register2',['login_res'=>$login_res]);
+        }        
+        if(!$request->filled('last-name')){
+            $login_res['ms']='Enter Your Last Name';
+            return view('auth.register2',['login_res'=>$login_res]);
+        }
+        if(!$request->filled('phone-number')){
+            $login_res['ms']='Enter Phone Number';
+            return view('auth.register2',['login_res'=>$login_res]);
+        }
+        if(!$request->filled('password')){
+            $login_res['ms']='Enter password';
+            return view('auth.register2',['login_res'=>$login_res]);
+        }
+        if(!$request->filled('password-confirm')){
+            $login_res['ms']='Enter password Confirm';
+            return view('auth.register2',['login_res'=>$login_res]);
+        }
+        $pass_c=$request->input('password-confirm');
+        $pass=$request->input('password');
+        if($pass_c!=$pass){
+            $login_res['ms']='Password Not Mach';
+            return view('auth.register2',['login_res'=>$login_res]);
+        }
+        $login_res['ms']='register Successfuly';
+        $login_res['status']=true; 
+        return view('auth.register2',['login_res'=>$login_res]);
     }
     public function login_user(Request $request)
     {

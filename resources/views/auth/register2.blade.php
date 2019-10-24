@@ -21,10 +21,10 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="http://192.168.43.83:81/login1">Login</a>
+                                <a class="nav-link" href="http://192.168.43.83:81/login2">Login</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="http://192.168.43.83:81/register1">Register</a>
+                                    <a class="nav-link" href="http://192.168.43.83:81/register2">Register</a>
                             </li>
                     </ul>
                 </div>
@@ -36,37 +36,55 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            Register <br>
-                            <small>welcome to store moradi konde</small>
+                            Register
                         </div>
                         <div class="card-boy">
-                            <form action="" method="post">
+                            <form action="/register2" method="post">
                                 @csrf
                                 <div class="form-group row justify-content-around">
-                                    <div class="col-sm-5 my-1">
+                                    <div class="col-sm-5 col-11 my-1">
                                         <input type="text" name="frist-name" class="form-control" placeholder="Frist Name">
                                     </div> 
-                                    <div class="col-sm-5 my-1">   
+                                    <div class="col-sm-5 col-11 my-1">   
                                         <input type="text" name="last-name" class="form-control" placeholder="Last Name">
                                     </div>
-                                    <div class="col-sm-11 my-1">
+                                    <div class="col-sm-5 col-11 my-1">
                                         <input type="email" name="email" class="form-control" placeholder="Email">
                                     </div> 
-                                    <div class="col-sm-5 my-1">
+                                    <div class="col-sm-5 col-11 my-1">
+                                        <input type="tel" name="phone-number" class="form-control" placeholder="Phone Number" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" required>                   
+
+                                    </div> 
+                                    <div class="col-sm-5 col-11 my-1">
                                         <input type="password" name="password" class="form-control" placeholder="Password">
                                     </div> 
-                                    <div class="col-sm-5 my-1">   
+                                    <div class="col-sm-5 col-11 my-1">   
                                         <input type="password" name="password-confirm" class="form-control" placeholder="Password Confirm">
                                     </div>                                    
-                                    <div class="form-check col-sm-11 my-1">
+                                    <!-- <div class="form-check col-11 my-1"> 
                                         <input type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox">I accept</label>
-                                    </div> 
-                                    <div class="col-sm-11 my-1">   
+                                    </div> -->
+                                    <div class="col-11 my-1 text-center">   
                                         <button type="submit" class="btn btn-primary">Register</button>
                                     </div>  
                                 </div>
                             </form>
+                            <div class="row justify-content-center">
+                                <div class="col-11">
+                                    @if(@isset($login_res))
+                                        @if($login_res['status'])
+                                            <div class="alert alert-success">
+                                                {{$login_res['ms']}}
+                                            </div>
+                                        @else
+                                            <div class="alert alert-danger">
+                                                {{$login_res['ms']}}
+                                            </div>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div> 
