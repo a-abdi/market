@@ -1,28 +1,12 @@
-
-
-body {
-  /* background-image: url(/imag/3.jpg); */
-  background-color: rgb(240, 240, 240);
-  margin:0;
- }
-
-
-
-.background-form{
-    background-color: rgb(245, 248, 253);
-
-}
-.border-sl{
-  border-radius: 10px;
-  margin: 12px 0;
-  border: 1px solid rgb(247, 252, 255);
-  box-sizing: border-box;
-}
-
-
-input[type=text], input[type=password] { 
-  border-radius: 6px;;
-  margin: 8px 0;
-  border: 1px solid rgb(184, 173, 173);
-  box-sizing: border-box;
-}
+.bg-b {
+    /* The image used */
+    background-image: url("/imag/8.jpg");
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

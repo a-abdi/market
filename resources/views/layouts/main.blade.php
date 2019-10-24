@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{{ asset('js/app.js') }}" defer></script>    
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/auth/login.css') }}" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>login</title>
+    <script src="{{asset('js/app.js')}}" defer></script>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/auth/login.css')}}">
+    <title>ورود</title>
 </head>
-<body class="background-body">
+<body class="bg-b">
     @yield('content')
 </body>
 </html>
