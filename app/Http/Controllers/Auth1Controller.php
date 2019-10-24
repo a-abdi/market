@@ -57,40 +57,56 @@ class Auth1Controller extends Controller
             $login_res['ms']='Enter password Confirm';
             return view('auth.register2',['login_res'=>$login_res]);
         }
+        $email = $request->input("email");
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $login_res['ms']='Invalid email format';
+            return view('auth.register2',['login_res'=>$login_res]);
+        }
+        $phone = $request->input("phone-number");
+        if(preg_match("/^[0-9]{4}[0-9]{3}[0-9]{4}$/", $phone)) {
+            $login_res['ms']='Invalid phone number';
+            return view('auth.register2',['login_res'=>$login_res]);
+          }
         $pass_c=$request->input('password-confirm');
         $pass=$request->input('password');
         if($pass_c!=$pass){
             $login_res['ms']='Password Not Mach';
             return view('auth.register2',['login_res'=>$login_res]);
         }
+
         $login_res['ms']='register Successfuly';
         $login_res['status']=true; 
         return view('auth.register2',['login_res'=>$login_res]);
     }
-    public function login_user(Request $request)
+    public function auth_login2(Request $request)
     {
         
-        if(!$request->filled('email')){
+        if(!$request->filled('phone-number')){
             $login_res['status']=false;
             $login_res['msg']='یوزر را وارد کنید';
-            return view('auth.login1',['login_res' => $login_res]);
+            return view('auth.login2',['login_res' => $login_res]);
         }
         if(!$request->filled('password')){
             $login_res['status']=false;
             $login_res['msg']='پسورد را وارد کنید';
-            return view('auth.login1',['login_res' => $login_res]);
+            return view('auth.login2',['login_res' => $login_res]);
             
         }
-        $email=$request->input('email');
+        $phone = $request->input("phone-number");
+        if(preg_match("/^[0-9]{4}[0-9]{3}[0-9]{4}$/", $phone)) {
+            $login_res['ms']='Invalid phone number';
+            return view('auth.register2',['login_res'=>$login_res]);
+          }
+        $email=$request->input('phone-number');
         $pass=$request->input('password');
-        if(($email=='aliabdi709')&&($pass=='dev')){
+        if(($email=='09394552776')&&($pass=='dev')){
             $login_res['status']=true;
             $login_res['msg']='ورود موفقیت آمیز';
-            return view('auth.login1',['login_res' => $login_res]);
+            return view('auth.login2',['login_res' => $login_res]);
         }
         $login_res['status']=false;
         $login_res['msg']='یوزر یا پسورد اشتباه هست';
-        return view('auth.login1',['login_res' => $login_res]);
+        return view('auth.login2',['login_res' => $login_res]);
         
         /*if(!$request->filled('email')){
             $err='یوزر وارد کنید';
