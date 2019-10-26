@@ -16,10 +16,7 @@
 
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-                    @if(session('phone-number'))
-
-
-                    @else
+                    @if(!session('phone-number'))
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Login</a>
                         </li>

@@ -16,7 +16,7 @@
                     Register
                 </div>
                 <div class="card-boy">
-                    <form action="/register" method="post">
+                    <form action="{{ route('register') }}" method="post">
                         @csrf
                         <div class="form-group row justify-content-around">
                             <div class="col-sm-5 col-11 my-1">
