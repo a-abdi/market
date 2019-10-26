@@ -45,14 +45,14 @@
                     </form>
                     <div class="row justify-content-center">
                         <div class="col-11">
-                            @if(@isset($login_res))
-                                @if($login_res['status'])
+                            @if(@isset($register_res))
+                                @if($register_res['status'])
                                     <div class="alert alert-success">
-                                        {{$login_res['ms']}}
+                                        {{$register_res['msg']}}
                                     </div>
                                 @else
                                     <div class="alert alert-danger">
-                                        {{$login_res['ms']}}
+                                        {{$register_res['msg']}}
                                     </div>
                                 @endif
                             @endif

@@ -23,50 +23,55 @@ class AuthController extends Controller
 
     
     public function register(Request $request){
-        $login_res['status']=false;
+
+        $register_res['status']=false;
         if(!$request->filled('frist-name')){
-            $login_res['ms']='Enter Your First Name';    
-            return view('auth.register',['login_res'=>$login_res]);
+            $register_res['msg']='نام را وارد کنید';    
+            return view('auth.register',['register_res'=>$register_res]);
         }        
         if(!$request->filled('last-name')){
-            $login_res['ms']='Enter Your Last Name';
-            return view('auth.register',['login_res'=>$login_res]);
+            $register_res['msg']='نام خانوادگی را وارد کنید';
+            return view('auth.register',['register_res'=>$register_res]);
         }
+        
         if(!$request->filled('phone-number')){
-            $login_res['ms']='Enter Phone Number';
-            return view('auth.register',['login_res'=>$login_res]);
+            $register_res['msg']='شماره موبایل وارد کنید';
+            return view('auth.register',['register_res'=>$register_res]);
         }
+        $phone = $request->input("phone-number");
+        if(!preg_match("/^[0-9]{11}$/", $phone)) {
+            $register_res['msg']='شماره موبایل نامعتبر هست';
+            return view('auth.register',['register_res'=>$register_res]);
+        }
+        
         if(!$request->filled('password')){
-            $login_res['ms']='Enter password';
-            return view('auth.register',['login_res'=>$login_res]);
+            $register_res['msg']='پسورد را وارد کنید';
+            return view('auth.register',['register_res'=>$register_res]);
         }
+        $pass=$request->input('password');
+
         if(!$request->filled('password-confirm')){
-            $login_res['ms']='Enter password Confirm';
-            return view('auth.register',['login_res'=>$login_res]);
+            $register_res['msg']='تایید پسورد وارد کنید';
+            return view('auth.register',['register_res'=>$register_res]);
         }
+        $pass_c=$request->input('password-confirm');
+        
+        if($pass_c!=$pass){
+            $register_res['msg']='پسورد تایید نشد';
+            return view('auth.register',['register_res'=>$register_res]);
+        }
+
         if($request->filled('email')){
             $email = $request->input("email");
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $login_res['ms']='Invalid email format';
-                return view('auth.register',['login_res'=>$login_res]);
+                $register_res['msg']='ایمیل نامعتبر هست';
+                return view('auth.register',['register_res'=>$register_res]);
             }
         }
-        $phone = $request->input("phone-number");
-        if(!preg_match("/^[0-9]{4}[0-9]{3}[0-9]{4}$/", $phone)) {
-            $login_res['ms']='Invalid phone number';
-            return view('auth.register',['login_res'=>$login_res]);
-          }
-        $pass_c=$request->input('password-confirm');
-        $pass=$request->input('password');
-        if($pass_c!=$pass){
-            $login_res['ms']='Password Not Mach';
-            return view('auth.register',['login_res'=>$login_res]);
-        }
-        else{
-            $login_res['ms']='register Successfuly';
-            $login_res['status']=true; 
-            return view('auth.register',['login_res'=>$login_res]);
-        }
+        
+        $register_res['msg']='ورود موفقیت آمیز';
+        $register_res['status']=true; 
+        return view('auth.register',['register_res'=>$register_res]);
     }
 
 
@@ -84,7 +89,7 @@ class AuthController extends Controller
             
         }
         $phone = $request->input('phone-number');
-        if(!preg_match("/^[0-9]{4}[0-9]{3}[0-9]{4}$/",$phone)) {
+        if(!preg_match("/^[0-9]{11}$/",$phone)) {
             $login_res['status']=false;
             $login_res['msg']='شماره تلفن نامعتبر هست';
             return view('auth.login',['login_res'=>$login_res]);
@@ -94,6 +99,10 @@ class AuthController extends Controller
         if(($email=='09394552776')&&($pass=='dev')){
             $login_res['status']=true;
             $login_res['msg']='ورود موفقیت آمیز';
+            session()->flush();
+            session()->regenerate();
+            $phone_n=$request->input("phone-number");
+            session()->put('phone-number',$phone_n);
             return view('auth.login',['login_res' => $login_res]);
         }
         $login_res['status']=false;
