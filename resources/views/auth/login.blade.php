@@ -34,15 +34,9 @@
                         </div>
                     </form>
                     @if(@isset($login_res))
-                        @if($login_res['status'])
-                            <div class="alert alert-success">
-                                {{$login_res['msg']}}  
-                            </div>   
-                        @else 
                             <div class="alert alert-danger">
                                 {{$login_res['msg']}}
                             </div>
-                        @endif            
                     @endif
                 </div>
             </div>

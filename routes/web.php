@@ -14,13 +14,12 @@
 Route::get('/get-users', 'AuthController@get_users');
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/profile','ProfileController@profile')->middleware('auth');
 
 Route::get('/register','AuthController@register_index');
-
 Route::post('/register','AuthController@register');
 
 Route::get('/login','AuthController@login_index');
-
 Route::post('/login','AuthController@login');
 
     
