@@ -1,4 +1,5 @@
-@extends("layouts/main")
+@extends('layouts.main')
+
 @section('scripts')
 
 @endsection
@@ -14,11 +15,11 @@
             <div class="card">
                 <div class="card-header">login</div>
                 <div class="card-body">
-                    <form action="/login" method="post">
+                    <form action="{{ route('login') }}" method="post">
                         @csrf
                         <div class="form-group row justify-content-center">
                             <div class="col-12 my-2 form-group">
-                                <input type="tell" class="form-control" name="phone-number" pattern="[0]{1}[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Phone Number" required>
+                                <input type="tell" class="form-control" name="phone-number" pattern="[0-9]{11}" placeholder="Phone Number" required>
                             </div>
                             <div class="col-12 my-2 form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password" required>

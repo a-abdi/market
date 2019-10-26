@@ -10,7 +10,7 @@
 @section('content') 
 <div class="container">
     <div class="row justify-content-center">
-        helo kiri
+        سلام کیری!
     </div>
 </div>
 
