@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Authenticate
+class Profile
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,8 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if($request->session()->has('phone-number'))
-           return redirect('/profile');
+        if(!$request->session()->has('phone-number'))
+            return redirect('/login');
 
         return $next($request);
     }
