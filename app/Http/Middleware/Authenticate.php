@@ -15,7 +15,7 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if($request->session()->has('phone-number'))
+        if($request->session()->has('id'))
            return redirect('/profile');
 
         return $next($request);

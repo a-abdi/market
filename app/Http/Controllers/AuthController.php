@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\post;
+use App\Models\User;
+
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -23,7 +25,7 @@ class AuthController extends Controller
     public function register(Request $request) {
         $register_res['status'] = false;
 
-        if(!$request->filled('frist-name')){
+        if(!$request->filled('frist_name')){
             $register_res['msg'] = 'نام را وارد کنید';    
             return view('auth.register', [
                     'register_res' => $register_res
@@ -31,7 +33,7 @@ class AuthController extends Controller
             );
         }        
 
-        if(!$request->filled('last-name')){
+        if(!$request->filled('last_name')){
             $register_res['msg']='نام خانوادگی را وارد کنید';
             return view('auth.register', [
                     'register_res' => $register_res
@@ -39,15 +41,15 @@ class AuthController extends Controller
             );
         }
         
-        if(!$request->filled('phone-number')){
+        if(!$request->filled('phone_number')){
             $register_res['msg'] = 'شماره موبایل وارد کنید';
             return view('auth.register', [
                     'register_res' => $register_res
                 ]
             );
         }
-        $phone = $request->input("phone-number");
-        if(!preg_match("/^[0-9]{11}$/", $phone)) {
+        $phone = $request->input('phone_number');
+        if(!preg_match("/^[1-9]{1}[0-9]{9}$/", $phone)) {
             $register_res['msg'] = 'شماره موبایل نامعتبر هست';
             return view('auth.register', [
                     'register_res' => $register_res
@@ -64,14 +66,14 @@ class AuthController extends Controller
         }
         $pass = $request->input('password');
 
-        if(!$request->filled('password-confirm')) {
+        if(!$request->filled('password_confirm')) {
             $register_res['msg'] = 'تایید پسورد وارد کنید';
             return view('auth.register',[
                     'register_res' => $register_res
                 ]
             );
         }
-        $pass_c = $request->input('password-confirm');
+        $pass_c = $request->input('password_confirm');
         
         if($pass_c != $pass){
             $register_res['msg'] = 'پسورد تایید نشد';
@@ -91,28 +93,34 @@ class AuthController extends Controller
                 );
             }
         }
+
+        //store to database
+        $this->store($request);
+   
+        return redirect('login');
         
-        $register_res['msg'] = 'ثبت نام موفقیت آمیز بود';
-        $register_res['status'] = true; 
-        return view('auth.register', [
-                'register_res' => $register_res
-            ]
-        );
+        // $register_res['msg'] = 'ثبت نام موفقیت آمیز بود';
+        // $register_res['status'] = true; 
+        // return view('auth.register', [
+        //         'register_res' => $register_res
+        //     ]
+        // );
     }
 
 
     public function login(Request $request)
     {    
         //check username
-        if(!$request->filled('phone-number')) {
+        if(!$request->filled('phone_number')) {
             $login_res['msg'] = 'یوزر را وارد کنید';
             return view('auth.login', [
                     'login_res' => $login_res
                 ]
             );
         }
-        $phone = $request->input('phone-number');
-        if(!preg_match("/^[0-9]{11}$/", $phone)) {
+
+        $phone = $request->input('phone_number');
+        if(!preg_match("/^[1-9]{1}[0-9]{9}$/", $phone)) {
             $login_res['msg'] = 'شماره تلفن نامعتبر هست';
             return view('auth.login', [
                     'login_res' => $login_res
@@ -130,22 +138,46 @@ class AuthController extends Controller
         }
         $pass = $request->input('password');
 
-        //validation
-        if( ($phone == '09394552776') && ($pass == 'dev') ){
-            //refresh session
-            session()->flush();
-            session()->regenerate();
-            
-            //login
-            session()->put('phone-number', $phone);
-            return redirect('/profile');
-        }
 
-        //authentication failed
-        $login_res['msg'] = 'یوزر یا پسورد اشتباه هست';
-        return view('auth.login', [
-                'login_res' => $login_res
-            ]
-        );
+        //
+        $users = DB::table('users')
+            ->where('phone_number', $phone)
+            ->where('password', $pass)
+            ->get();
+
+        if(!count($users)) {
+            $login_res['msg'] = 'یوزر یا پسورد اشتباه هست';
+            return view('auth.login', [
+                    'login_res' => $login_res
+                ]
+            ); 
+        }
+        
+        //
+        //validation
+        //refresh session
+        $user = $users[0];
+        session()->flush();
+        session()->regenerate();
+            
+        //login
+        session()->put('id',$user->id);
+        session()->put('phone_number', $user->phone_number);
+        return redirect('/profile');
+
     }
+
+    //store information register in database
+    public function store(Request $request)
+    {   
+        $user = new User;
+        $user->first_name = $request->input('frist_name');
+        $user->last_name =  $request->input('last_name');
+        $user->phone_number =  $request->input('phone_number');
+        $user->email =  $request->input('email');
+        $user->password =  $request->input('password');
+        $user->save();
+    }
+
+    // read information
 }

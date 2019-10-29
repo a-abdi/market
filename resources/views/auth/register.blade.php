@@ -20,23 +20,23 @@
                         @csrf
                         <div class="form-group row justify-content-around">
                             <div class="col-sm-5 col-11 my-1">
-                                <input type="text" name="frist-name" class="form-control" placeholder="Frist Name" required>
+                                <input type="text" name="frist_name" class="form-control" placeholder="Frist Name" required>
                             </div> 
                             <div class="col-sm-5 col-11 my-1">   
-                                <input type="text" name="last-name" class="form-control" placeholder="Last Name" required>
+                                <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
                             </div>
                             <div class="col-sm-5 col-11 my-1">
                                 <input type="email" name="email" class="form-control" placeholder="Email">
                             </div> 
                             <div class="col-sm-5 col-11 my-1">
-                                <input type="tel" name="phone-number" class="form-control" placeholder="Phone Number" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" required>                   
+                                <input type="tel" name="phone_number" class="form-control" placeholder="Phone Number" pattern="[1-9]{1}[0-9]{9}" required>                   
 
                             </div> 
                             <div class="col-sm-5 col-11 my-1">
                                 <input type="password" name="password" class="form-control" placeholder="Password" required>
                             </div> 
                             <div class="col-sm-5 col-11 my-1">   
-                                <input type="password" name="password-confirm" class="form-control" placeholder="Password Confirm" required>
+                                <input type="password" name="password_confirm" class="form-control" placeholder="Password Confirm" required>
                             </div>                                    
                             <div class="col-11 my-1 text-center">   
                                 <button type="submit" class="btn btn-primary">Register</button>

@@ -11,7 +11,7 @@
 @section('content')  
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-10 col-sm-8 col-md-5 ">
+        <div class="col-10 col-sm-8 col-md-5">
             <div class="card">
                 <div class="card-header">login</div>
                 <div class="card-body">
@@ -19,7 +19,7 @@
                         @csrf
                         <div class="form-group row justify-content-center">
                             <div class="col-12 my-2 form-group">
-                                <input type="tell" class="form-control" name="phone-number" pattern="[0-9]{11}" placeholder="Phone Number" required>
+                                <input type="tell" class="form-control" name="phone_number" pattern="[1-9]{1}[0-9]{9}" placeholder="Phone Number" required>
                             </div>
                             <div class="col-12 my-2 form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password" required>
