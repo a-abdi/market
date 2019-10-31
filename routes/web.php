@@ -13,7 +13,8 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/profile','ProfileController@profile');
+Route::get('/profile','ProfileController@profile_index');
+Route::post('/profile','ProfileController@profile');
 
 Route::get('/login','AuthController@login_index')->name('login');
 Route::post('/login','AuthController@login');

@@ -1,4 +1,3 @@
-{{dd(session()->all())}}
 @extends('layouts.main')
 @section('styles')
 <link rel="stylesheet" href="{{asset('css/profile/profile.css')}}">
@@ -28,8 +27,12 @@
                         ارسال
                     </button>
                 </div>
-             </div>
-
+            </div>
+            <!-- <div class="row justify-content-center my-1">
+                <div class="alert text-center w-25  alert-success">
+                    {{'تراکنش موفق بود'}}
+                </div>
+            </div> -->
         </div>
     </div>
 </div>
