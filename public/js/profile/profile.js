@@ -1,18 +1,17 @@
+
 function save_good() {
-    var name = $('#name').val();
-    var price = $('#price').val();
+  var name = $('#name').val();
+  var price = $('#price').val();
+  var imagefile = $('#file');
 
-    alert("Page is loaded");
+  var formData = new FormData();
 
-    axios.post('/profile', {
-        name: name,
-        price: price
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    
+  formData.append("image", imagefile[0].files[0]);
+  formData.append("name", name);
+  formData.append("price", price);
+  axios.post('/profile', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
 }

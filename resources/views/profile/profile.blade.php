@@ -19,7 +19,7 @@
                     <input type="number" min="0" step="1" max="99999999" class="form-control text-right" id="price" placeholder="قیمت کالا">
                 </div>
                 <div class="col-md-4 my-1 text-center">
-                    <input type="text" class="form-control text-right" placeholder="عکس">
+                    <input type="file" id="file">
                 </div>
                 
                 <div class="col-md-12 my-1 text-center">

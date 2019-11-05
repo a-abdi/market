@@ -98,13 +98,6 @@ class AuthController extends Controller
         $this->store($request);
    
         return redirect('login');
-        
-        // $register_res['msg'] = 'ثبت نام موفقیت آمیز بود';
-        // $register_res['status'] = true; 
-        // return view('auth.register', [
-        //         'register_res' => $register_res
-        //     ]
-        // );
     }
 
 
