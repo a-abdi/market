@@ -93,11 +93,22 @@ class AuthController extends Controller
                 );
             }
         }
+        $users = DB::table('users')
+            ->where('phone_number', $phone)
+            ->get();
+
+        if(count($users)) {
+            $register_res['msg'] = ' این شماره قبلا ثبت نام کرده';
+            return view('auth.register', [
+                    'register_res' => $register_res
+                ]
+            ); 
+        }   
 
         //store to database
-        $this->store($request);
-   
-        return redirect('login');
+        $user = $this->store($request);   
+        $this->set_session($user);
+        return redirect('/profile');
     }
 
 
@@ -129,10 +140,8 @@ class AuthController extends Controller
                 ]
             ); 
         }
-        $pass = $request->input('password');
+        $pass = $request->input('password'); 
 
-
-        //
         $users = DB::table('users')
             ->where('phone_number', $phone)
             ->where('password', $pass)
@@ -148,14 +157,10 @@ class AuthController extends Controller
         
         //
         //validation
-        //refresh session
+        
         $user = $users[0];
-        session()->flush();
-        session()->regenerate();
-            
-        //login
-        session()->put('id',$user->id);
-        session()->put('phone_number', $user->phone_number);
+        $this->set_session($user);
+        
         return redirect('/profile');
 
     }
@@ -170,7 +175,19 @@ class AuthController extends Controller
         $user->email =  $request->input('email');
         $user->password =  $request->input('password');
         $user->save();
+        return $user;
     }
 
-    // read information
+    public function set_session($user)
+    {
+        //refresh session
+        session()->flush();
+        session()->regenerate();
+            
+        //login
+        session()->put('id',$user->id);
+        session()->put('phone_number', $user->phone_number);
+
+    }
+    
 }

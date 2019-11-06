@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/','HomeController@index')->name('home');
 Route::get('/goods','HomeController@goods');
 
 Route::get('/profile','ProfileController@profile_index');

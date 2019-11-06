@@ -8,16 +8,15 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-12">
+<div class ="container-fluid">
+    <div class ="row justify-content-center">
+        <div class ="col-12">
             <img src ="{{asset('imag/11.jpg')}}" class ="img-fluid" alt ="Responsive image">
         </div>
     </div>
-    <div id="main" class="row justify-content-end">
-        
-    </div>
+    <div id="main" class ="row justify-content-end">
 
+    </div>
 </div>
 @endsection
 
