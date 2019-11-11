@@ -48,8 +48,10 @@ class AuthController extends Controller
                 ]
             );
         }
-        $phone = $request->input('phone_number');
-        if(!preg_match("/^[1-9]{1}[0-9]{9}$/", $phone)) {
+
+        $phone = $this->convert_phone_number($request->input('phone_number'));
+        $request["phone_number"] = $phone;
+        if(!$phone){
             $register_res['msg'] = 'شماره موبایل نامعتبر هست';
             return view('auth.register', [
                     'register_res' => $register_res
@@ -93,10 +95,11 @@ class AuthController extends Controller
                 );
             }
         }
+        ;
         $users = DB::table('users')
             ->where('phone_number', $phone)
             ->get();
-
+        
         if(count($users)) {
             $register_res['msg'] = ' این شماره قبلا ثبت نام کرده';
             return view('auth.register', [
@@ -104,8 +107,8 @@ class AuthController extends Controller
                 ]
             ); 
         }   
-
-        //store to database
+        
+        //store to database        
         $user = $this->store($request);   
         $this->set_session($user);
         return redirect('/profile');
@@ -123,8 +126,9 @@ class AuthController extends Controller
             );
         }
 
-        $phone = $request->input('phone_number');
-        if(!preg_match("/^[1-9]{1}[0-9]{9}$/", $phone)) {
+        $phone = $this->convert_phone_number($request->input('phone_number'));
+        $request["phone_number"] = $phone;
+        if(!$phone) {
             $login_res['msg'] = 'شماره تلفن نامعتبر هست';
             return view('auth.login', [
                     'login_res' => $login_res
@@ -188,6 +192,22 @@ class AuthController extends Controller
         session()->put('id',$user->id);
         session()->put('phone_number', $user->phone_number);
 
+    }
+    public function convert_phone_number($phone)
+    {
+        if(preg_match("/^[+]{1}[9]{1}[8]{1}[1-9]{1}[0-9]{9}$/", $phone)){
+           return mb_substr($phone, -10, 10, 'utf-8');
+        }
+
+        if(preg_match("/^[0]{1}[1-9]{1}[0-9]{9}$/", $phone)){
+            return mb_substr($phone, -10, 10, 'utf-8');
+        }
+
+        if(preg_match("/^[1-9]{1}[0-9]{9}$/", $phone)) {
+            return $phone;
+        }
+
+        return false;
     }
     
 }

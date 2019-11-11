@@ -15,6 +15,6 @@ class HomeController extends Controller
     }
     public function goods()
     {
-        return DB::table('goods')->get();
+        return DB::table('users')->join('goods', 'users.id', '=', 'goods.user_id')->get();
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         @include('layouts.head')
-        <title>Document</title>
+        <title>@yield('title')</title>
     </head>
     <body class="bg-b">
         <div id="app">

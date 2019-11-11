@@ -1,4 +1,9 @@
 @extends('layouts.main')
+
+@section('title')
+    Register
+@endsection
+
 @section('styles')
 <link rel="stylesheet" href="{{asset('css/auth/register.css')}}">
 @endsection
@@ -29,7 +34,7 @@
                                 <input type="email" name="email" class="form-control text-right" placeholder="ایمیل">
                             </div> 
                             <div class="col-sm-5 col-11 my-1">
-                                <input type="tel" name="phone_number" class="form-control text-right" placeholder="شماره تلفن" pattern="[1-9]{1}[0-9]{9}" required>
+                                <input type="tel" name="phone_number" class="form-control text-right" placeholder="شماره تلفن" required>
                             </div> 
                             <div class="col-sm-5 col-11 my-1">   
                                 <input type="password" name="password_confirm" class="form-control text-right" placeholder="تایید رمز" required>

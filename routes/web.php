@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Http\Request;
+
+
 Route::get('/','HomeController@index')->name('home');
 Route::get('/goods','HomeController@goods');
 
@@ -22,3 +25,5 @@ Route::post('/login','AuthController@login');
 
 Route::get('/register','AuthController@register_index')->name('register');
 Route::post('/register','AuthController@register');
+
+Route::get('/infoimage','InfoimageController@info_image');

@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('title')
+    Login
+@endsection
+
 @section('scripts')
 
 @endsection
@@ -19,7 +23,7 @@
                         @csrf
                         <div class="form-group row justify-content-center">
                             <div class="col-12 my-2 form-group">
-                                <input type="tell" class="form-control text-right" name="phone_number" pattern="[1-9]{1}[0-9]{9}" placeholder="شماره موبایل" required>
+                                <input type="tell" class="form-control text-right" name="phone_number" placeholder="شماره تلفن" required>
                             </div>
                             <div class="col-12 my-2 form-group">
                                 <input type="password" class="form-control text-right" name="password" placeholder="رمز" required>
@@ -37,7 +41,7 @@
                         </div>
                     </form>
                     @if(@isset($login_res))
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger text-center">
                                 {{$login_res['msg']}}
                             </div>
                     @endif

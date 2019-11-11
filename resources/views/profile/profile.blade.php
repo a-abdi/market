@@ -1,4 +1,9 @@
 @extends('layouts.main')
+
+@section('title')
+    Profile
+@endsection
+
 @section('styles')
 <link rel="stylesheet" href="{{asset('css/profile/profile.css')}}">
 @endsection
