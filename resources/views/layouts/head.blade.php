@@ -5,5 +5,5 @@
     <script src="{{asset('js/main.js')}}"></script>
     @yield('scripts')
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
-    <link rel="icon" href="demo_icon.gif" type="image/gif" sizes="16x16">
+    <!-- <link rel="icon" href="demo_icon.gif" type="image/gif" sizes="16x16"> -->
     @yield('styles')
