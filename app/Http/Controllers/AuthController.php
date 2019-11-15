@@ -128,10 +128,11 @@ class AuthController extends Controller
 
         $phone = $this->convert_phone_number($request->input('phone_number'));
         $request["phone_number"] = $phone;
+       
         if(!$phone) {
             $login_res['msg'] = 'شماره تلفن نامعتبر هست';
             return view('auth.login', [
-                    'login_res' => $login_res
+                'login_res' => $login_res
                 ]
             );
         }
@@ -148,10 +149,11 @@ class AuthController extends Controller
 
         $users = DB::table('users')
             ->where('phone_number', $phone)
-            ->where('password', $pass)
+            // ->where('password', $pass)
             ->get();
-
-        if(!count($users)) {
+           
+            
+        if($users[0]->password != $pass) {
             $login_res['msg'] = 'یوزر یا پسورد اشتباه هست';
             return view('auth.login', [
                     'login_res' => $login_res
@@ -163,6 +165,7 @@ class AuthController extends Controller
         //validation
         
         $user = $users[0];
+    
         $this->set_session($user);
         
         return redirect('/profile');

@@ -9,33 +9,34 @@ function show(response,id){
                 <div class="container-fluid"> \n\
                     <div class="row"> \n\
                         <div class="col-6"> \n\
-                            <div class=""> \n\
-                                <div class="row"> \n\
-                                    <div class="col-6 text-left pr-0"> \n\
-                                        <div class="row"> \n\
-                                            <div class="col-12 text-right px-0"> \n\
-                                                <span class="s-f">'+response.data[i]["created_at"]+'</span> \n\
+                            <span class="s-f d-rtl">زمان ارسال '+response.data[i]["created_at"]+'</span> \n\
+                            <div class="border-0 card mb-1"> \n\
+                                <div class="row no-gutters"> \n\
+                                    <div class="col-8"> \n\
+                                        <div class="card-body px-1 py-0 text-right"> \n\
+                                            <div class="d-rtl"> \n\
+                                                <span class="card-title s-f">'+response.data[i]["first_name"] + ' ' + response.data[i]["last_name"]+'</span> \n\
                                             </div> \n\
-                                            <div class="col-12 text-right px-0 d-none" id='+ response.data[i]['id'] +'> \n\
-                                                <span class="s-f">'+response.data[i]["first_name"] + ' ' + response.data[i]["last_name"]+'</span> \n\
+                                            <div class="d-rtl"> \n\
+                                                <span class="s-f"> امتیاز: </span> \n\
                                             </div> \n\
                                         </div> \n\
                                     </div> \n\
-                                    <div class="col-6 px-0">  \n\
-                                        <img src="avetar.png"  alt="Avetar" class ="img-avetar-size"> \n\
+                                    <div class="col-4"> \n\
+                                        <img src="avetar.png" class="card-img img-avetar-size" alt="avetar"> \n\
                                     </div> \n\
                                 </div> \n\
                             </div> \n\
                         </div> \n\
-                        <div class="col-6"> \n\
-                            <div class="text-center"> \n\
-                                <span class="pointer" onclick="info_image('+response.data[i]['id']+')"> \n\
+                        <div class="col-6 p-1"> \n\
+                            <div class="text-center py-1"> \n\
+                                <span class="pointer strong font-weight-bold" onclick="info_image('+response.data[i]['id']+')"> \n\
                                     '+response.data[i]['name']+' \n\
                                 </span> \n\
                             </div> \n\
-                            <div class="text-center"> \n\
-                                <span class="text"> \n\
-                                    '+response.data[i]['price']+' \n\
+                            <div class="text-center py-1"> \n\
+                                <span class="text strong font-weight-bold d-rtl"> \n\
+                                     '+response.data[i]['price']+' \n\
                                 </span> \n\
                             </div> \n\
                         </div> \n\
