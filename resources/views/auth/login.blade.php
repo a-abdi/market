@@ -23,10 +23,10 @@
                         @csrf
                         <div class="form-group row justify-content-center">
                             <div class="col-12 my-2 form-group">
-                                <input type="tell" class="form-control text-right" name="phone_number" placeholder="شماره تلفن" required>
+                                <input type="tell" class="form-control text-right" name="phone_number" placeholder="شماره تلفن">
                             </div>
                             <div class="col-12 my-2 form-group">
-                                <input type="password" class="form-control text-right" name="password" placeholder="رمز" required>
+                                <input type="password" class="form-control text-right" name="password" placeholder="رمز">
                             </div>
                             <div class="col-12 my-2 form-group text-right">
                                 <label class="form-check-label" for="checkbox">منو به یاد داشته باش</label>
