@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use Facades\App\Repositories\SharedRepository;
+
+use Facades\App\Repositories\AuthRepository;
+
 use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
@@ -42,17 +46,22 @@ class AuthController extends Controller
         }
         
         if(!$request->filled('phone_number')){
-            $register_res['msg'] = 'شماره موبایل وارد کنید';
+            $register_res['msg'] = 'شماره تلفن را وارد کنید';
             return view('auth.register', [
                     'register_res' => $register_res
                 ]
             );
         }
 
-        $phone = $this->convert_phone_number($request->input('phone_number'));
+        
+        $status = SharedRepository::check_number_persian($request->input('phone_number'));
+        if($status){
+            $request["phone_number"]= SharedRepository::convert2english($request->input('phone_number'));
+        }
+        $phone = SharedRepository::convert_phone_number($request->input('phone_number'));
         $request["phone_number"] = $phone;
         if(!$phone){
-            $register_res['msg'] = 'شماره موبایل نامعتبر هست';
+            $register_res['msg'] = 'شماره تلفن نامعتبر هست';
             return view('auth.register', [
                     'register_res' => $register_res
                 ]
@@ -69,7 +78,7 @@ class AuthController extends Controller
         $pass = $request->input('password');
 
         if(!$request->filled('password_confirm')) {
-            $register_res['msg'] = 'تایید پسورد وارد کنید';
+            $register_res['msg'] = 'تایید پسورد را وارد کنید';
             return view('auth.register',[
                     'register_res' => $register_res
                 ]
@@ -95,7 +104,7 @@ class AuthController extends Controller
                 );
             }
         }
-        ;
+        
         $users = DB::table('users')
             ->where('phone_number', $phone)
             ->get();
@@ -109,8 +118,9 @@ class AuthController extends Controller
         }   
         
         //store to database        
-        $user = $this->store($request);   
-        $this->set_session($user);
+        $user = $this->store($request);  
+        AuthRepository::refresh_session(); 
+        AuthRepository::set_session($user);
         return redirect('/profile');
     }
 
@@ -119,15 +129,18 @@ class AuthController extends Controller
     {    
         //check username
         if(!$request->filled('phone_number')) {
-            $login_res['msg'] = 'یوزر را وارد کنید';
+            $login_res['msg'] = 'شماره تلفن را وارد کنید';
             return view('auth.login', [
                     'login_res' => $login_res
                 ]
             );
         }
 
-        $phone = $this->convert_phone_number($request->input('phone_number'));
-        $request["phone_number"] = $phone;
+        $status = SharedRepository::check_number_persian($request->input('phone_number'));
+        if($status){
+            $request["phone_number"]= SharedRepository::convert2english($request->input('phone_number'));
+        }
+        $phone = SharedRepository::convert_phone_number($request->input('phone_number'));
        
         if(!$phone) {
             $login_res['msg'] = 'شماره تلفن نامعتبر هست';
@@ -154,7 +167,7 @@ class AuthController extends Controller
            
             
         if($users[0]->password != $pass) {
-            $login_res['msg'] = 'یوزر یا پسورد اشتباه هست';
+            $login_res['msg'] = 'شماره تلفن یا پسورد اشتباه هست';
             return view('auth.login', [
                     'login_res' => $login_res
                 ]
@@ -166,7 +179,8 @@ class AuthController extends Controller
         
         $user = $users[0];
     
-        $this->set_session($user);
+        AuthRepository::refresh_session();
+        AuthRepository::set_session($user);
         
         return redirect('/profile');
 
@@ -184,33 +198,5 @@ class AuthController extends Controller
         $user->save();
         return $user;
     }
-
-    public function set_session($user)
-    {
-        //refresh session
-        session()->flush();
-        session()->regenerate();
-            
-        //login
-        session()->put('id',$user->id);
-        session()->put('phone_number', $user->phone_number);
-
-    }
-    public function convert_phone_number($phone)
-    {
-        if(preg_match("/^[+]{1}[9]{1}[8]{1}[1-9]{1}[0-9]{9}$/", $phone)){
-           return mb_substr($phone, -10, 10, 'utf-8');
-        }
-
-        if(preg_match("/^[0]{1}[1-9]{1}[0-9]{9}$/", $phone)){
-            return mb_substr($phone, -10, 10, 'utf-8');
-        }
-
-        if(preg_match("/^[1-9]{1}[0-9]{9}$/", $phone)) {
-            return $phone;
-        }
-
-        return false;
-    }
-    
+   
 }

@@ -12,7 +12,9 @@
 
 @section('scripts')
     <script src="{{asset('js/home/home.js')}}"></script>
-    <script src="{{asset('js/home/show_image.js')}}"></script>
+    <script src="{{asset('js/main/show_image.js')}}"></script>
+    <script src="{{asset('js/main/event_mouseover_showitem.js')}}"></script>
+    <script src="{{asset('js/main/show_avetar.js')}}"></script>
 @endsection
 
 @section('content')

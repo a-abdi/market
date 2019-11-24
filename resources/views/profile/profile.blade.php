@@ -10,7 +10,7 @@
 
 @section('scripts')
 <script src="{{asset('js/profile/profile.js')}}"></script>
-<script src="{{asset('js/home/show_image.js')}}"></script>
+<script src="{{asset('js/main/show_image.js')}}"></script>
 @endsection
 
 @section('content') 

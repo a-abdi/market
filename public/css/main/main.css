@@ -1,8 +1,29 @@
 .img-avetar-size{
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     border-radius: 5%;
 }
+/* small font */
 .s-f{
     font-size: 9px;
+}
+/* show mouse pointer */
+.pointer {cursor: pointer;}
+
+/* show mouse text */
+.text {cursor: text;}
+
+/* right to left */
+.d-rtl {direction: rtl;}
+
+.f-price{font-size: 13px;}
+
+.img-avetar-size-larg{
+    width: 60px;
+    height: 60px;
+    border-radius: 5%;
+}
+
+.p-r{
+    position: relative;
 }
