@@ -1,3 +1,4 @@
 <div class="alert alert-danger">
-    {{ $slot }}
+    <div class="alert-title">{{ $data['0']->name }}</div>
+    <!-- {{ $slot }} -->
 </div>

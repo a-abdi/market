@@ -17,9 +17,16 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-lg-8 col-xl-6">
-            <img src="/{{$data['0']->img_src}}" alt="{{$data['0']->name}}" width="300rem" height="300rem">
-        </div>
+        
+       
+            @foreach ($data as $user)
+            <div class="col-12">
+                <p class="text center m-2 p-2"> {{ $user->name }}</p> 
+
+            </div>
+            @endforeach
+
+
     </div>
 
 </div>
