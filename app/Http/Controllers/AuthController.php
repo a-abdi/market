@@ -160,24 +160,26 @@ class AuthController extends Controller
         }
         $pass = $request->input('password'); 
 
-        $users = DB::table('users')
+        $res = true;
+        $user = DB::table('users')
             ->where('phone_number', $phone)
-            // ->where('password', $pass)
-            ->get();
+            ->first();
            
-            
-        if($users[0]->password != $pass) {
-            $login_res['msg'] = 'شماره تلفن یا پسورد اشتباه هست';
-            return view('auth.login', [
-                    'login_res' => $login_res
-                ]
-            ); 
+        if(empty($user)) {
+            $res = false;
+        } else {
+            if($user->password != $pass) {
+                $res = false;
+            }
         }
         
-        //
-        //validation
-        
-        $user = $users[0];
+        if(!$res) {
+            $login_res['msg'] = 'شماره تلفن یا پسورد اشتباه هست';
+            return view('auth.login', [
+                'login_res' => $login_res
+                ]
+            );
+        }
     
         AuthRepository::refresh_session();
         AuthRepository::set_session($user);
