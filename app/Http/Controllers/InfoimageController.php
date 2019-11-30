@@ -16,13 +16,23 @@ class InfoimageController extends Controller
     // }
        
     public function info_image(Request $request){
-        if(!$request->filled('id')) {
-            return [
-                'err' => 'no id found'
-            ];
-        }
+        // if(!$request->filled('id')) {
+        //     return [
+        //         'err' => 'not found id'
+        //     ];
+        // }
 
+        // check error 404
         $id = $request->input('id');
+        
+        $check_error = DB::table('goods')
+        ->where('id', $id)
+        ->get();
+        
+        if(!count($check_error)) {
+            abort(404);       
+        }   
+        
         $data = DB::table('goods')
             ->join('users', 'goods.user_id', '=', 'users.id')
             ->select('users.first_name','users.last_name','users.email','users.phone_number','goods.name','goods.price','goods.img_src','goods.created_at')

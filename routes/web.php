@@ -26,3 +26,4 @@ Route::get('/register','AuthController@register_index')->name('register');
 Route::post('/register','AuthController@register');
 
 Route::get('/infoimage','InfoimageController@info_image');
+Route::get('/mygoods','MygoodsController@my_goods');

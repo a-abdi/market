@@ -21,12 +21,10 @@ function show_avetar(response,i,id){
 
 }
 
-function show_avetar_larg(id){
-    $("main").append(
-        '<div class="p-r"> \n\
-            <img src="avetar.png" class="card-img img-avetar-size_larg" alt="avetar"> \n\
-        </div> \n\
-      ');
+function show_avetar_larg(element){
+    // $("#"+element.id+"").html('');
+
+    
   
        
 }
