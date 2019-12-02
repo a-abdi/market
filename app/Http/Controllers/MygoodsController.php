@@ -20,7 +20,7 @@ class MygoodsController extends Controller
             ->join('users', 'goods.user_id', '=', 'users.id')
             ->select('users.first_name','users.last_name','users.email','users.phone_number','goods.name','goods.price','goods.img_src','goods.created_at')
             ->where('user_id', $user_id)
-            ->get();
+            ->paginate(5);
         // dd($data);
         return view('mygoods.mygoods',['data'=>$data]);
     }

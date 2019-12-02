@@ -72,7 +72,7 @@
                         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary text-right" aria-labelledby="navbarDropdownMenuLink-55">
                             <a class="dropdown-item" href="#">پروفایل</a>
                             <a class="dropdown-item" href="#">سفارش های من</a>
-                            <a class="dropdown-item" href="#">خروج</a>
+                            <a class="dropdown-item" href="{{action('ExitController@exit')}}">خروج</a>
                         </div>
                     </li>
                 </ul>
