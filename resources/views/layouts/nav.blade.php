@@ -60,19 +60,19 @@
                         </a>
                     </li> -->
                     <li class="nav-item mt-1">
-                        <a class="nav-link" href="/mygoods">آگهی های من</a>
+                        <a class="nav-link" id="id_1" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/mygoods">آگهی های من</a>
                     </li>
                     <li class="nav-item mt-1">
-                        <a class="nav-link" href="/profile">ثبت آگهی</a>
+                        <a class="nav-link" id="id_2" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/profile">ثبت آگهی</a>
                     </li>
                     <li class="nav-item avatar dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0" alt="avatar image" width="40" height="40">
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary text-right" aria-labelledby="navbarDropdownMenuLink-55">
-                            <a class="dropdown-item" href="#">پروفایل</a>
-                            <a class="dropdown-item" href="#">سفارش های من</a>
-                            <a class="dropdown-item" href="{{action('ExitController@exit')}}">خروج</a>
+                            <a class="dropdown-item" href="#" id="id_3" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">پروفایل</a>
+                            <a class="dropdown-item" href="#" id="id_4" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">سفارش های من</a>
+                            <a class="dropdown-item" href="{{action('ExitController@exit')}}" id="id_5" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">خروج</a>
                         </div>
                     </li>
                 </ul>

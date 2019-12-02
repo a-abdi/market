@@ -1,25 +1,4 @@
-@extends('layouts.main')
-
-@section('title')
-    mygoods
-@endsection
-
-@section('styles')
-<!-- <link rel="stylesheet" href="{{asset('css/profile/profile.css')}}"> -->
-@endsection
-
-@section('scripts')
-<!-- <script src="{{asset('js/profile/profile.js')}}"></script>
-<script src="{{asset('js/main/show_image.js')}}"></script> -->
-@endsection
-
-@section('content') 
-
-@component('layouts.components.goods',['data' => $data])
-
-@endcomponent
-
-<!-- <div class="container-fluid">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-12 col-sm-8 col-md-10 px-0">
             <div class="card shadow text-center d-rtl">
@@ -104,8 +83,5 @@
             </div>
         </div>
     </div>
-</div> -->
-
-        
-
-@endsection
+</div>
+{{ $slot }}
