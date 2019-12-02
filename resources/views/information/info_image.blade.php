@@ -16,7 +16,7 @@
 
 <div class="container">
    <div class="row">
-        <div class="col-12 text-right d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
+        <div class="col-12 text-right d-block d-sm-block d-md-none d-lg-none d-xl-none">
             <h1 class="hidden-lg-up">{{$data->name}}</h1>
         </div>
 
@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                        <div class="d-xs-none d-sm-none d-md-block d-lg-block d-xl-block text-right">
+                        <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block text-right">
                             <h1 class="card-title  ">
                                 {{$data->name}}
                             </h1></div>

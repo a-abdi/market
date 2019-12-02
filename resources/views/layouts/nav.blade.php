@@ -1,86 +1,85 @@
-            @if(!session('phone_number'))
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-                <a class="navbar-brand py-0" href="/">
-                    <img src="/gif.png" alt="خانه" class ="pointer" height="45" width="45">
-                </a>
-                <button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navbarSupportedContent" aria-controls ="navbarSupportedContent" aria-expanded ="false" aria-label ="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-        
-                <div class ="collapse navbar-collapse" id ="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class ="navbar-nav mr-auto">
-                    </ul>
-                    <!-- Right Side Of Navbar -->
-                    <ul class ="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                            <li class ="nav-item">
-                                <a class ="nav-link" href="/login">ورود</a>
-                            </li>
-                            <li class ="nav-item">
-                                    <a class="nav-link" href="/register">ثبت نام</a>
-                            </li>
-
-
-                    </ul>
-                </div>
-                </div>
-</nav>
-            @else
-                
-                    <!--Navbar -->
-                    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-                <div class="container">
-                    <a class="navbar-brand py-0" href="/">
-                        <img src="/gif.png" alt="خانه" class ="pointer" height="45" width="45">
-                    </a>
-
-                    <button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navbarSupportedContent-555" aria-controls ="navbarSupportedContent-555" aria-expanded ="false" aria-label ="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                    <div class="collapse navbar-collapse text-right" id="navbarSupportedContent-555">
-                        <ul class="navbar-nav mr-auto">
-                           
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Dropdown
-                                </a>
-                                <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </li> -->
-                        </ul>
-                       
-                        <ul class="navbar-nav ml-auto nav-flex-icons">
-                            <!-- <li class="nav-item">
-                                <a class="nav-link waves-effect waves-light">1
-                                    <i class="fas fa-envelope"></i>
-                                </a>
-                            </li> -->
-                            <li class="nav-item mt-1">
-                                <a class="nav-link" href="/mygoods">آگهی های من</a>
-                            </li>
-                            <li class="nav-item mt-1">
-                                <a class="nav-link" href="/profile">ثبت آگهی</a>
-                            </li>
-                            <li class="nav-item avatar dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0" alt="avatar image" width="40" height="40">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary text-right" aria-labelledby="navbarDropdownMenuLink-55">
-                                    <a class="dropdown-item" href="#">پروفایل</a>
-                                    <a class="dropdown-item" href="#">سفارش های من</a>
-                                    <a class="dropdown-item" href="#">خروج</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-<!--/.Navbar -->
-            @endif
             
+@if(!session('phone_number'))
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand py-0" href="/">
+                <img src="/gif.png" alt="خانه" class ="pointer" height="45" width="45">
+            </a>
+            <button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navbarSupportedContent" aria-controls ="navbarSupportedContent" aria-expanded ="false" aria-label ="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class ="collapse navbar-collapse" id ="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class ="navbar-nav mr-auto">
+                </ul>
+                <!-- Right Side Of Navbar -->
+                <ul class ="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    <li class ="nav-item">
+                        <a class ="nav-link" href="/login">ورود</a>
+                    </li>
+                    <li class ="nav-item">
+                            <a class="nav-link" href="/register">ثبت نام</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+@else
+        
+    <!--Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand py-0" href="/">
+                <img src="/gif.png" alt="خانه" class ="pointer" height="45" width="45">
+            </a>
+
+            <button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navbarSupportedContent-555" aria-controls ="navbarSupportedContent-555" aria-expanded ="false" aria-label ="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse text-right" id="navbarSupportedContent-555">
+                <ul class="navbar-nav mr-auto">
+                    
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Dropdown
+                        </a>
+                        <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li> -->
+                </ul>
+                
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link waves-effect waves-light">1
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </li> -->
+                    <li class="nav-item mt-1">
+                        <a class="nav-link" href="/mygoods">آگهی های من</a>
+                    </li>
+                    <li class="nav-item mt-1">
+                        <a class="nav-link" href="/profile">ثبت آگهی</a>
+                    </li>
+                    <li class="nav-item avatar dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0" alt="avatar image" width="40" height="40">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary text-right" aria-labelledby="navbarDropdownMenuLink-55">
+                            <a class="dropdown-item" href="#">پروفایل</a>
+                            <a class="dropdown-item" href="#">سفارش های من</a>
+                            <a class="dropdown-item" href="#">خروج</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!--/.Navbar -->
+@endif
+        
        

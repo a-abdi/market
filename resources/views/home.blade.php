@@ -6,8 +6,6 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/home/home.css')}}">
-    <link rel="stylesheet" href="{{asset('css/main/main.css')}}">
-
 @endsection
 
 @section('scripts')

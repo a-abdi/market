@@ -16,6 +16,8 @@
 /* right to left */
 .d-rtl {direction: rtl;}
 
+.d-ltr {direction: ltr;}
+
 .f-price{font-size: 13px;}
 
 .img-avetar-size-larg{
@@ -27,3 +29,9 @@
 .p-r{
     position: relative;
 }
+
+.border-3 {
+    border-width:2px !important;
+    border-color: rgb(170, 178, 187);
+}
+
