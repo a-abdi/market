@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 
+use Facades\App\Repositories\AuthRepository;
+
 class ProfileController extends Controller
 {
     public function __construct() 
@@ -21,34 +23,33 @@ class ProfileController extends Controller
     }
 
     public function profile(Request $request) 
-    {
+    {    
+        $error = AuthRepository::auth_name($request);
+        if($error){
+            return $error;
+        }
+
+        $error = AuthRepository::auth_price($request);
+        if($error){
+            return $error;
+        }
+
+        $error = AuthRepository::auth_image($request);
+        if($error){
+            return $error;
+        }
+
         //store image to disk
-        $img_src = $this->store_img($request);
-
-        if(!$img_src){
-            return [
-                'error' => 'عکس انتخاب نشده'
-            ];
-        }
-
-        if(!$request->filled('name')) {
-            return [
-                'error' => 'نام کالا انتخاب نشده'
-            ];
-        }
-        
-        if(!$request->filled('price')) {
-            return [
-                'error' => 'قیمت کالا تعیین نشده'
-            ];
-        }
+        $img =  $request->file('image');
+        $img_name = $img->store('images','public'); 
+        $img_src = 'storage/'.$img_name;
         
         //store data to database 
-        $this->store($request,$img_src);
+        $this->store_goods($request,$img_src);
     }
 
     //function store
-    public function store($request,$img_src){
+    public function store_goods($request,$img_src){
         $good = new Good; 
         $good->name = $request->input('name');
         $good->price = $request->input('price');
@@ -56,14 +57,4 @@ class ProfileController extends Controller
         $good->img_src = $img_src;
         $good->save();
     }
-
-    public function store_img($request){
-        $img =  $request->file('image');
-        if(!$img){
-            return null;
-        }
-        $img_name = $img->store('images','public'); 
-        return 'storage/'.$img_name;
-    }
-
 }
