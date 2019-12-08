@@ -43,6 +43,11 @@ class AuthRepository
                 'error' => 'قیمت کالا نمی تواند منفی باشد'
             ];
         }
+        if($request->price > 9999999999) {
+            return [
+                'error' => 'حداکثر قیمت مجاز ۹,۹۹۹,۹۹۹,۹۹۹ می باشد'
+            ];
+        }
         return null;
     }
 
