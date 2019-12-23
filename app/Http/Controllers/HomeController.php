@@ -16,11 +16,11 @@ class HomeController extends Controller
     public function goods()
     {
         // block adress 192.168.43.83:81/goods for all user
-       $url = session('_previous');
-    //    dd($url['url']);
-       if($url['url']!='http://192.168.43.83:81'){
-        abort(404);
-       }
+    //    $url = session('_previous');
+    // //    dd($url['url']);
+    //    if($url['url']!='http://192.168.43.83:81'){
+    //     abort(404);
+    //    }
        
        
 

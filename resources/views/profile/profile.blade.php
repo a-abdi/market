@@ -28,7 +28,7 @@
                     <input class="border rounded w-100" type="file" onchange="readURL(this);" id="file" >
                 </div>
                 <div class="col-12 text-center my-1" id="image_preview">
-                    <img id="blah" src="" class="d-none" alt="your image" />
+                    <img id="blah" src="" class="d-none" alt="your image"/>
                         <!-- show image preview -->
                 </div>
                 <div class="col-12 my-1 text-center">
