@@ -11,12 +11,22 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/profile','ProfileController@profile');
+
+Route::get('/','HomeController@index')->name('home');
+Route::get('/goods','HomeController@goods');
+
+Route::get('/profile','ProfileController@profile_index');
+Route::post('/profile','ProfileController@profile');
 
 Route::get('/login','AuthController@login_index')->name('login');
 Route::post('/login','AuthController@login');
 
 Route::get('/register','AuthController@register_index')->name('register');
 Route::post('/register','AuthController@register');
+
+Route::get('/infoimage','InfoimageController@info_image');
+
+Route::get('/exit', 'ExitController@exit');
+
+Route::get('/mygoods','MygoodsController@my_goods');

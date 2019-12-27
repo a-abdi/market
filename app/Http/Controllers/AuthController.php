@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\post;
+use App\Models\User;
+
+use Facades\App\Repositories\SharedRepository;
+
+use Facades\App\Repositories\AuthRepository;
+
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function login_index() {
         return view('auth.login');
     }
@@ -19,7 +29,7 @@ class AuthController extends Controller
     public function register(Request $request) {
         $register_res['status'] = false;
 
-        if(!$request->filled('frist-name')){
+        if(!$request->filled('frist_name')){
             $register_res['msg'] = 'نام را وارد کنید';    
             return view('auth.register', [
                     'register_res' => $register_res
@@ -27,7 +37,7 @@ class AuthController extends Controller
             );
         }        
 
-        if(!$request->filled('last-name')){
+        if(!$request->filled('last_name')){
             $register_res['msg']='نام خانوادگی را وارد کنید';
             return view('auth.register', [
                     'register_res' => $register_res
@@ -35,16 +45,23 @@ class AuthController extends Controller
             );
         }
         
-        if(!$request->filled('phone-number')){
-            $register_res['msg'] = 'شماره موبایل وارد کنید';
+        if(!$request->filled('phone_number')){
+            $register_res['msg'] = 'شماره تلفن را وارد کنید';
             return view('auth.register', [
                     'register_res' => $register_res
                 ]
             );
         }
-        $phone = $request->input("phone-number");
-        if(!preg_match("/^[0-9]{11}$/", $phone)) {
-            $register_res['msg'] = 'شماره موبایل نامعتبر هست';
+
+        
+        $status = SharedRepository::check_number_persian($request->input('phone_number'));
+        if($status){
+            $request["phone_number"]= SharedRepository::convert2english($request->input('phone_number'));
+        }
+        $phone = SharedRepository::convert_phone_number($request->input('phone_number'));
+        $request["phone_number"] = $phone;
+        if(!$phone){
+            $register_res['msg'] = 'شماره تلفن نامعتبر هست';
             return view('auth.register', [
                     'register_res' => $register_res
                 ]
@@ -60,14 +77,14 @@ class AuthController extends Controller
         }
         $pass = $request->input('password');
 
-        if(!$request->filled('password-confirm')) {
-            $register_res['msg'] = 'تایید پسورد وارد کنید';
+        if(!$request->filled('password_confirm')) {
+            $register_res['msg'] = 'تایید پسورد را وارد کنید';
             return view('auth.register',[
                     'register_res' => $register_res
                 ]
             );
         }
-        $pass_c = $request->input('password-confirm');
+        $pass_c = $request->input('password_confirm');
         
         if($pass_c != $pass){
             $register_res['msg'] = 'پسورد تایید نشد';
@@ -88,30 +105,47 @@ class AuthController extends Controller
             }
         }
         
-        $register_res['msg'] = 'ثبت نام موفقیت آمیز بود';
-        $register_res['status'] = true; 
-        return view('auth.register', [
-                'register_res' => $register_res
-            ]
-        );
+        $users = DB::table('users')
+            ->where('phone_number', $phone)
+            ->get();
+        
+        if(count($users)) {
+            $register_res['msg'] = ' این شماره قبلا ثبت نام کرده';
+            return view('auth.register', [
+                    'register_res' => $register_res
+                ]
+            ); 
+        }   
+        
+        //store to database        
+        $user = $this->store($request);  
+        AuthRepository::refresh_session(); 
+        AuthRepository::set_session($user);
+        return redirect('/profile');
     }
 
 
     public function login(Request $request)
     {    
         //check username
-        if(!$request->filled('phone-number')) {
-            $login_res['msg'] = 'یوزر را وارد کنید';
+        if(!$request->filled('phone_number')) {
+            $login_res['msg'] = 'شماره تلفن را وارد کنید';
             return view('auth.login', [
                     'login_res' => $login_res
                 ]
             );
         }
-        $phone = $request->input('phone-number');
-        if(!preg_match("/^[0-9]{11}$/", $phone)) {
+
+        $status = SharedRepository::check_number_persian($request->input('phone_number'));
+        if($status){
+            $request["phone_number"]= SharedRepository::convert2english($request->input('phone_number'));
+        }
+        $phone = SharedRepository::convert_phone_number($request->input('phone_number'));
+       
+        if(!$phone) {
             $login_res['msg'] = 'شماره تلفن نامعتبر هست';
             return view('auth.login', [
-                    'login_res' => $login_res
+                'login_res' => $login_res
                 ]
             );
         }
@@ -124,24 +158,47 @@ class AuthController extends Controller
                 ]
             ); 
         }
-        $pass = $request->input('password');
+        $pass = $request->input('password'); 
 
-        //validation
-        if( ($phone == '09394552776') && ($pass == 'dev') ){
-            //refresh session
-            session()->flush();
-            session()->regenerate();
-            
-            //login
-            session()->put('phone-number', $phone);
-            return redirect('/profile');
+        $res = true;
+        $user = DB::table('users')
+            ->where('phone_number', $phone)
+            ->first();
+           
+        if(empty($user)) {
+            $res = false;
+        } else {
+            if($user->password != $pass) {
+                $res = false;
+            }
         }
-
-        //authentication failed
-        $login_res['msg'] = 'یوزر یا پسورد اشتباه هست';
-        return view('auth.login', [
+        
+        if(!$res) {
+            $login_res['msg'] = 'شماره تلفن یا پسورد اشتباه هست';
+            return view('auth.login', [
                 'login_res' => $login_res
-            ]
-        );
+                ]
+            );
+        }
+    
+        AuthRepository::refresh_session();
+        AuthRepository::set_session($user);
+        
+        return redirect('/profile');
+
     }
+
+    //store information register in database
+    public function store(Request $request)
+    {   
+        $user = new User;
+        $user->first_name = $request->input('frist_name');
+        $user->last_name =  $request->input('last_name');
+        $user->phone_number =  $request->input('phone_number');
+        $user->email =  $request->input('email');
+        $user->password =  $request->input('password');
+        $user->save();
+        return $user;
+    }
+   
 }

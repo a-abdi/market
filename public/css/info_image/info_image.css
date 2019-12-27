@@ -1,0 +1,19 @@
+body{
+    font-family: iransans-light;
+    background-color: rgb(255, 255, 255);
+    /* background-image: url("/imag/4.png"); */
+    /* Full height */
+    /* height: 100%; */
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+  }
+  .bg{
+    background-color: rgb(246, 247, 241);
+  }
+  
+  ul.lstn {list-style-type: none;}
+
+  .d-rtl {direction: rtl;}

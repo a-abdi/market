@@ -10,4 +10,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+<<<<<<< HEAD
 /.Trash-1000
+=======
+debug.log
+.Trash-1000
+>>>>>>> 89c003f8ef581dfdee95533c839b884ebbd05e07

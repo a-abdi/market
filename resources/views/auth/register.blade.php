@@ -1,4 +1,9 @@
 @extends('layouts.main')
+
+@section('title')
+    Register
+@endsection
+
 @section('styles')
 <link rel="stylesheet" href="{{asset('css/auth/register.css')}}">
 @endsection
@@ -12,38 +17,37 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
-                    Register
+                <div class="card-header text-right">
+                    ثبت نام
                 </div>
                 <div class="card-boy">
                     <form action="{{ route('register') }}" method="post">
                         @csrf
                         <div class="form-group row justify-content-around">
-                            <div class="col-sm-5 col-11 my-1">
-                                <input type="text" name="frist-name" class="form-control" placeholder="Frist Name" required>
-                            </div> 
                             <div class="col-sm-5 col-11 my-1">   
-                                <input type="text" name="last-name" class="form-control" placeholder="Last Name" required>
+                                <input type="text" name="last_name" class="form-control text-right" placeholder="نام خانوادگی" tabindex="2">
                             </div>
                             <div class="col-sm-5 col-11 my-1">
-                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                <input type="text" name="frist_name" class="form-control text-right" placeholder="نام" tabindex="1">
                             </div> 
                             <div class="col-sm-5 col-11 my-1">
-                                <input type="tel" name="phone-number" class="form-control" placeholder="Phone Number" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" required>                   
-
+                                <input type="email" name="email" class="form-control text-right" placeholder="ایمیل" tabindex="4">
                             </div> 
                             <div class="col-sm-5 col-11 my-1">
-                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                                <input type="tel" name="phone_number" class="form-control text-right" placeholder="شماره تلفن" tabindex="3">
                             </div> 
                             <div class="col-sm-5 col-11 my-1">   
-                                <input type="password" name="password-confirm" class="form-control" placeholder="Password Confirm" required>
+                                <input type="password" name="password_confirm" class="form-control text-right" placeholder="تایید رمز" tabindex="6">
                             </div>                                    
+                            <div class="col-sm-5 col-11 my-1">
+                                <input type="password" name="password" class="form-control text-right" placeholder="رمز" tabindex="5">
+                            </div> 
                             <div class="col-11 my-1 text-center">   
-                                <button type="submit" class="btn btn-primary">Register</button>
+                                <button type="submit" class="btn btn-primary" tabindex="7">ثبت نام</button>
                             </div>  
                         </div>
                     </form>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center text-center">
                         <div class="col-11">
                             @if(@isset($register_res))
                                 @if($register_res['status'])
