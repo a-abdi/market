@@ -5,11 +5,11 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('js/info_image/info_image.js')}}"></script>
+    <script src="{{asset('js/image/image.js')}}"></script>
 @endsection
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/info_image/info_image.css')}}">
+    <link rel="stylesheet" href="{{asset('css/image/image.css')}}">
 @endsection
 
 @section('content') 

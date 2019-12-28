@@ -1,4 +1,3 @@
-
 $( document ).ready(function() {
     axios.get('/goods')
     .then(function (response) {
@@ -12,10 +11,12 @@ $( document ).ready(function() {
         
     });
 });
-function info_image(id) {
-   
-    
+function get_image_info(id) {
     // $(location).attr('href','login');
-    window.location.href = "infoimage/?id="+id+"";
+    window.location.href = "/image/"+id+"";
+    //param
+    //  /search/user_id/1/good_id/4
+    //string
+    //  /search/?user_id=1&good_id=4
 }
  

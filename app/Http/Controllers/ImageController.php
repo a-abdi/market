@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\DB;
 use App\Exceptions\Handler;
 
 
-class InfoimageController extends Controller
+class ImageController extends Controller
 {
     // public function __construct(){
     //     $this->middleware('profile');
     // }
        
-    public function info_image(Request $request){
+    public function get_image_info(Request $request, $id){
         // if(!$request->filled('id')) {
         //     return [
         //         'err' => 'not found id'
@@ -23,8 +23,7 @@ class InfoimageController extends Controller
         // }
 
         // check error 404
-        $id = $request->input('id');
-        
+        // $id = $request->input('id');
         $check_error = DB::table('goods')
         ->where('id', $id)
         ->get();
