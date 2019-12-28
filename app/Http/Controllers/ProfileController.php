@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 use Facades\App\Repositories\AuthRepository;
 
+use Cookie;
+
 class ProfileController extends Controller
 {
     public function __construct() 
@@ -19,6 +21,7 @@ class ProfileController extends Controller
 
     public function profile_index() 
     {
+        Cookie::queue('user_id', session()->get('id'));
         return view('profile.profile');
     }
 

@@ -32,6 +32,8 @@ class BladeServiceProvider extends ServiceProvider
         });
 
         Blade::directive('duration', function ($date) {
+
+            return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->diffForHumans(); ?>";
             
             
             // $rest = substr("abcdef", -1);    // returns "f"

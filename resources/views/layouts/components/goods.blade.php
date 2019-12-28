@@ -46,7 +46,7 @@
                                                            </div>
                                                         </div>
                                                         <div class="col-12 text-right mt-3 mb-3">
-                                                            <h6>بازدید: @duration(58854)</h6>
+                                                            <h6>بازدید: @duration($user->created_at)</h6>
                                                         </div>
                                                         <div class="col-sm-6 text-right mt-2 d-none d-sm-block">
                                                             <button type="button" class="btn btn-outline-secondary">سفارش ها</button>
