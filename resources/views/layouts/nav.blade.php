@@ -60,7 +60,7 @@
                         </a>
                     </li> -->
                     <li class="nav-item mt-1">
-                        <a class="nav-link" id="id_1" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/mygoods">آگهی های من</a>
+                        <a class="nav-link" id="id_1" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/user/{{ Session::get('id')}}/goods">آگهی های من</a>
                     </li>
                     <li class="nav-item mt-1">
                         <a class="nav-link" id="id_2" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/profile">ثبت آگهی</a>
