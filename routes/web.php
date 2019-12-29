@@ -33,3 +33,5 @@ Route::get('/admin/auth/login','AdminAuthController@adminlogin_index');
 Route::post('/admin/auth/login','AdminAuthController@adminlogin');
 
 Route::get('/admin','AdminController@adminindex');
+
+Route::get('/admin/users','AdminController@admin_users');
