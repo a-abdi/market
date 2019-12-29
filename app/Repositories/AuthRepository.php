@@ -24,7 +24,17 @@ class AuthRepository
     {
         if(!$request->filled('name')) {
             return [
-                'error' => 'نام کالا انتخاب نشده'
+                'error' => 'نام انتخاب نشده'
+            ];
+        }
+        return null;
+    }
+
+    public function auth_password($request)
+    {
+        if(!$request->filled('password')) {
+            return [
+                'error' => 'پسورد انتخاب نشده'
             ];
         }
         return null;

@@ -30,5 +30,6 @@ Route::get('/exit', 'ExitController@exit');
 Route::get('/user/{user_id}/goods','GoodsController@get_user_goods');
 
 Route::get('/admin/auth/login','AdminAuthController@adminlogin_index');
+Route::post('/admin/auth/login','AdminAuthController@adminlogin');
 
 Route::get('/admin','AdminController@adminindex');
