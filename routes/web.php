@@ -28,3 +28,7 @@ Route::get('/image/{user_id}','ImageController@get_image_info');
 Route::get('/exit', 'ExitController@exit');
 
 Route::get('/user/{user_id}/goods','GoodsController@get_user_goods');
+
+Route::get('/admin/auth/login','AdminAuthController@adminlogin_index');
+
+Route::get('/admin','AdminController@adminindex');

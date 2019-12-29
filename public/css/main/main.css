@@ -35,3 +35,9 @@
     border-color: rgb(170, 178, 187);
 }
 
+
+.item-center {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
