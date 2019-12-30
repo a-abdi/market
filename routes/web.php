@@ -37,3 +37,5 @@ Route::get('/admin','AdminController@adminindex');
 Route::get('/admin/users','AdminController@admin_users');
 
 Route::get('/admin/goods','AdminController@admin_goods');
+
+Route::delete('/admin/goods/delete','AdminController@admin_goods_delete');

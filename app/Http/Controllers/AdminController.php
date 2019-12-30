@@ -29,9 +29,16 @@ class AdminController extends Controller
     public function admin_goods()
     {
         $data = DB::table('goods')
-        ->select('name','price','img_src','created_at')
+        ->select('name','price','img_src','created_at','id')
         ->get();
         
         return view('admin.goods',['data'=>$data]);
+    }
+    
+    public function admin_goods_delete(Request $request)
+    {
+        DB::table('goods')->delete($request->input('id'));
+
+        // dd($request->input('id'));
     }
 }

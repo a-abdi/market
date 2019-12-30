@@ -1,7 +1,9 @@
 
 <table class="table table-hover table-dark">
   <thead>
-    {{ $titletable }}
+    <tr>
+      {{ $titletable }}
+    </tr>
   </thead>
   <tbody>
       {{ $slot }}
