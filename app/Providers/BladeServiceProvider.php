@@ -35,12 +35,6 @@ class BladeServiceProvider extends ServiceProvider
 
             return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->diffForHumans(); ?>";
             
-            
-            // $rest = substr("abcdef", -1);    // returns "f"
-            // $rest = substr("abcdef", -2);    // returns "ef"
-            $rest = substr($date,2,2); // returns "d"
-            // $rest = "10";
-            return "<?php echo $rest; ?>";
         });
 
     }

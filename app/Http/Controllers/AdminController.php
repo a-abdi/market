@@ -25,4 +25,13 @@ class AdminController extends Controller
         // dd($data);
        return view('admin.users', ['data'=>$data]);
     }
+
+    public function admin_goods()
+    {
+        $data = DB::table('goods')
+        ->select('name','price','img_src','created_at')
+        ->get();
+        
+        return view('admin.goods',['data'=>$data]);
+    }
 }

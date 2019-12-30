@@ -35,3 +35,5 @@ Route::post('/admin/auth/login','AdminAuthController@adminlogin');
 Route::get('/admin','AdminController@adminindex');
 
 Route::get('/admin/users','AdminController@admin_users');
+
+Route::get('/admin/goods','AdminController@admin_goods');

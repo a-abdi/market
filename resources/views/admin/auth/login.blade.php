@@ -26,13 +26,13 @@
 					<div class="container-floud">
 						<div class="row">
 							<div class="col-12">
-								<input type="text" class="form-control text-right my-2" id="user_name" placeholder="نام کاربری" tabindex="0">
+								<input type="text" class="form-control text-right my-2" id="user_name" placeholder="نام کاربری">
 							</div>
 							<div class="col-12">
-								<input type="password" class="form-control text-right my-2" id="password" placeholder="رمز" tabindex="1">
+								<input type="password" class="form-control text-right my-2" id="password" placeholder="رمز">
 							</div>
 							<div class="col-12">
-								<button type="button" class="btn btn-primary w-100 my-2" onclick="login()" tabindex="2">ورود</button>
+								<button type="button" class="btn btn-primary w-100 my-2" onclick="login()">ورود</button>
 							</div>
 							<div class="col-12 mt-2" id="msg">
 							
