@@ -5,10 +5,10 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav text-right pr-0">
       <li class="nav-item">
-        <a class="nav-link" href="#">لیست کالاها</a>
+        <a class="nav-link" href="{{asset('/admin/goods')}}">لیست کالاها</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">لیست کابران</a>
+        <a class="nav-link" href="{{asset('/admin/users')}}">لیست کابران</a>
       </li>
     </ul>
   </div>

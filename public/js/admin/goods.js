@@ -1,4 +1,4 @@
-function deletegoods(good_id)
+function deletegood(good_id)
 {
     var result = confirm('آیا کالا مورد نظر خذف شود؟');
     if(result){
@@ -7,9 +7,15 @@ function deletegoods(good_id)
             
         }).then(function(response) {
             $('#'+ good_id +'').remove();
-            console.log(response.data);
+            
         }).catch(function(error) {
-            console.log(error);
+            
         });
     }
+}
+
+function details_image(id)
+{
+    window.location.href = "/image/"+ id +"";
+
 }
