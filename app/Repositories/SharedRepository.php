@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Facades\DB;
+
 class SharedRepository
 {
 
@@ -41,8 +43,13 @@ class SharedRepository
         return false;
     }
 
-    
-
-
+    public function admin_goods_search($value,$type)
+    {
+        $data = DB::table('goods')
+        ->select('name','price','img_src','created_at','id','user_id')
+        ->where($type, $value)
+        ->get();
+        return $data;
+    }
 
 }

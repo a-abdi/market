@@ -5,7 +5,7 @@
       {{ $titletable }}
     </tr>
   </thead>
-  <tbody>
+  <tbody id="table_body">
       {{ $slot }}
   </tbody>
 </table>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
+use Facades\App\Repositories\SharedRepository;
+
 class AdminController extends Controller
 {
     public function __construct(){
@@ -29,7 +31,7 @@ class AdminController extends Controller
     public function admin_goods()
     {
         $data = DB::table('goods')
-        ->select('name','price','img_src','created_at','id')
+        ->select('name','price','img_src','created_at','id','user_id')
         ->get();
         
         return view('admin.goods',['data'=>$data]);
@@ -40,5 +42,12 @@ class AdminController extends Controller
         DB::table('goods')->delete($request->input('id'));
 
         // dd($request->input('id'));
+    }
+
+    public function good_search(Request $request)
+    {
+        $data = SharedRepository::admin_goods_search($request->input('value'),$request->input('type'));
+        // dd($data);
+        return $data;
     }
 }

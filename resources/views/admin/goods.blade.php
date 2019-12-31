@@ -13,15 +13,17 @@
 
 @section('scripts')
     <script src="{{asset('js/admin/goods.js')}}"></script>
+    <script src="{{asset('js/main/admin_tab_search.js')}}"></script>
 @endsection
 
 
 @section('content')
-
-    @admin_goods_table(['data' => $data])
-
-    @endadmin_goods_table
-
+   @grid()
+        @component('layouts.components.admin.tab_search_goods')
+        @endcomponent
+    @endgrid
+        @admin_goods_table(['data' => $data])
+        @endadmin_goods_table
 @endsection
 
 
