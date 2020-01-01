@@ -36,30 +36,10 @@ function search_user_id(id_input,id_type_search)
     type = 'user_id';
 }
 
-function good_search(input_id)
+
+function good_search(input_id,id_table_body)
 {
     var value = document.getElementById(input_id).value;
-    switch (type) 
-    {
-        case 'name':
-            search(value,type);
-            break;
-        case 'price':
-            search(value,type);
-            break;
-        case 'created_at':
-            search(value,type);
-            break;
-        case 'id':
-            search(value,type);
-            break;
-        case 'user_id':
-            search(value,type);
-    }
-}
-
-function search(value,type)
-{
     axios.get('/admin/goods/search', {
         params: {
           value: value,
@@ -67,20 +47,10 @@ function search(value,type)
         }
       })
         .then(function (response) {
-            var row = 1;
+          
             $('#table_body').html('');
-                response.data.forEach(function(entry) {
-                    $('#table_body').append('<tr id ="'+ entry['id'] +'"> \n\
-                        <th scope="row">'+ row++ +'</th> \n\
-                        <td><img src="/'+ entry['img_src'] +'" class="pointer" alt="'+ entry['name'] +'" onclick="details_image('+ entry['id'] +')" style="max-width: 5rem;" height="50rem"></td> \n\
-                        <td>'+ entry['name'] +'</td> \n\
-                        <td>'+ entry['price'] +'</td> \n\
-                        <td>'+ entry['created_at'] +'</td> \n\
-                        <td>'+ entry['id'] +'</td> \n\
-                        <td>'+ entry['user_id'] +'</td> \n\
-                        <td><button class="btn btn-outline-danger" onclick="deletegood('+ entry['id'] +')"> حذف</button> </td> \n\
-                    </tr>')
-            });
+            table_body(response,id_table_body);
+               
       })
       .catch(function (error) {
         console.log(error);

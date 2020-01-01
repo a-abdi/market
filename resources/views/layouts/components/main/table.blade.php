@@ -1,7 +1,7 @@
 
 <table class="table table-hover table-dark">
   <thead>
-    <tr>
+    <tr id="table_header">
       {{ $titletable }}
     </tr>
   </thead>

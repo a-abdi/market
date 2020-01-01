@@ -13,7 +13,8 @@
 
 @section('scripts')
     <script src="{{asset('js/admin/goods.js')}}"></script>
-    <script src="{{asset('js/main/admin_tab_search.js')}}"></script>
+    <script src="{{asset('js/admin/tab_search.js')}}"></script>
+    <script src="{{asset('js/main/table.js')}}"></script>
 @endsection
 
 

@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
     <div class=" col-2 pr-0">
-        <button class="btn btn-secondary w-100 rounded-0" onclick="good_search('input_search')">جستجو</button>
+        <button class="btn btn-secondary w-100 rounded-0" onclick="good_search('input_search','table_body')">جستجو</button>
      </div>
         <div class="col-10 pl-0">
             <div class="input-group">
