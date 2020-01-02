@@ -14,24 +14,24 @@ function save_good() {
       'Content-Type': 'multipart/form-data'
     }
   }).then(function (response) {
-    if(response.data.error) {
-      $("#msg").html(
-        '<div class="alert text-center alert-danger" width="200px"> \n\
-          '+ response.data.error +' \n\
-        </div>'
-      );
-    } else {
+      if(response.data.error) {
         $("#msg").html(
-          '<div class="alert text-center alert-success" width="200px"> \n\
-              کالا با موفقبت ثبت شد \n\
+          '<div class="alert text-center alert-danger" width="200px"> \n\
+            '+ response.data.error +' \n\
           </div>'
         );
-       
-      $("#name").val("");  
-      $("#price").val("");
-      $("#file").val("");
-    }
-})
+      } else {
+          $("#msg").html(
+            '<div class="alert text-center alert-success" width="200px"> \n\
+                کالا با موفقبت ثبت شد \n\
+            </div>'
+          );
+        
+        $("#name").val("");  
+        $("#price").val("");
+        $("#file").val("");
+      }
+    })
 .catch(function (error) {
     
 });

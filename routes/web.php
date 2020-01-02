@@ -28,3 +28,16 @@ Route::get('/image/{user_id}','ImageController@get_image_info');
 Route::get('/exit', 'ExitController@exit');
 
 Route::get('/user/{user_id}/goods','GoodsController@get_user_goods');
+
+Route::get('/admin/auth/login','AdminAuthController@adminlogin_index');
+Route::post('/admin/auth/login','AdminAuthController@adminlogin');
+
+Route::get('/admin','AdminController@adminindex');
+
+Route::get('/admin/users','AdminController@admin_users');
+
+Route::get('/admin/goods','AdminController@admin_goods');
+
+Route::get('/admin/goods/search','AdminController@good_search');
+
+Route::delete('/admin/goods/delete','AdminController@admin_goods_delete');
