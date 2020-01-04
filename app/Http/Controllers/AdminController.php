@@ -52,4 +52,20 @@ class AdminController extends Controller
         // dd($data);
         return $data;
     }
+
+    public function admin_users_detail(Request $request, $user_id)
+    {
+
+        $users = DB::table('users')
+        ->select('users.first_name','users.last_name','users.email','users.phone_number','users.created_at')
+        ->where('id','=',$user_id)
+        ->get();
+        // dd($users);
+        if(!count($users))
+        {
+            abort(404);
+        }
+        // dd($users);
+        return view('admin.users_detail', ['users'=>$users]);
+    }
 }
