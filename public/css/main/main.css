@@ -46,3 +46,6 @@ body{
     float: none; /* Added */
     margin-bottom: 10px; /* Added */
 }
+
+.container-outer { overflow: scroll; width: 500px; height: 210px; }
+.container-inner { width: 10000px; }

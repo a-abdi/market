@@ -41,3 +41,7 @@ function details_image(id)
 {
     window.location.href = "/image/"+ id +"";
 }
+
+function users(id) {
+    window.location.href = "/admin/users/"+id+"";
+}
