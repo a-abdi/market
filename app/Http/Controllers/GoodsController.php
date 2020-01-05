@@ -25,6 +25,6 @@ class GoodsController extends Controller
             ->where('user_id', $user_id)
             ->paginate(5);
         // dd($data);
-        return view('profile.user_goods',['data'=>$data]);
+        return view('users.goods',['data'=>$data]);
     }
 }

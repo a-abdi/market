@@ -28,7 +28,7 @@ class ImageController extends Controller
             ->get();
             $data=$data['0'];
 
-        return view('information.info_image',['data'=>$data]);
+        return view('goods.information',['data'=>$data]);
         
 
     }

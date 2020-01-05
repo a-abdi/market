@@ -22,7 +22,7 @@ class ProfileController extends Controller
     public function profile_index() 
     {
         Cookie::queue('user_id', session()->get('id'));
-        return view('profile.profile');
+        return view('users.profile');
     }
 
     public function profile(Request $request) 
