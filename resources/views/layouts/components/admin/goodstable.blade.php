@@ -16,14 +16,14 @@
                 @endphp                    
                 @foreach ($data as $good)
                     <tr id ="{{$good->id}}">
-                        <th class="py-3" scope="row">{{$i = $i+1}} </th>
+                        <th class="py-3 d-flex align-items-center" scope="row">{{$i = $i+1}} </th>
                         <td ><img src="/{{$good->img_src}}" class="pointer" alt="{{$good->name}}" onclick="details_image({{$good->id}})" style="max-width: 5rem;" height="50rem"></td>
                         <td class="py-3">{{$good->name}}</td>
                         <td class="py-3">{{$good->price}}</td>
                         <td class="py-3">{{$good->created_at}}</td>
                         <td class="py-3">{{$good->id}}</td>
                         <td class="py-3">{{$good->user_id}}</td>
-                        <td><button class="btn btn-outline-danger" onclick="deletegood({{$good->id}})"> حذف</button> </td>
+                        <td><button class="btn btn-outline-danger" onclick="delete_good({{$good->id}})"> حذف</button> </td>
                         <td><button class="btn btn-outline-info" onclick="users({{$good->user_id}})"> لینک</button> </td>
                     <tr>
                 @endforeach

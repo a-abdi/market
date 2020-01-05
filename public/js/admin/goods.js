@@ -21,7 +21,7 @@ $( document ).ready(function() {
 });
 
 
-function deletegood(good_id)
+function delete_good(good_id)
 {
     var result = confirm('آیا کالا مورد نظر خذف شود؟');
     if(result){

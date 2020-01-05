@@ -11,19 +11,8 @@ use App\Exceptions\Handler;
 
 class ImageController extends Controller
 {
-    // public function __construct(){
-    //     $this->middleware('profile');
-    // }
        
     public function get_image_info(Request $request, $user_id){
-        // if(!$request->filled('id')) {
-        //     return [
-        //         'err' => 'not found id'
-        //     ];
-        // }
-
-        // check error 404
-        // $user_id = $request->input('id');
         $check_error = DB::table('goods')
         ->where('id', $user_id)
         ->get();

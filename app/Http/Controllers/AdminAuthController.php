@@ -10,15 +10,15 @@ class AdminAuthController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('adminauth');
+        $this->middleware('admin_auth');
     }
 
-    public function adminlogin_index()
+    public function login_index()
     {
         return view('admin.auth.login');
     }
 
-    public function adminlogin(Request $request)
+    public function login(Request $request)
     {
         $error = AuthRepository::auth_name($request);
         if($error){
@@ -32,21 +32,20 @@ class AdminAuthController extends Controller
         
         if($request->input('name') != "root"){
             $error = [
-                'error' => 'نام کاربری اشتباه هست'
+                'error' => 'نام کاربری اشتباه است.'
             ];
             return $error;
         }
 
         if($request->input('password') != "toor"){
             $error = [
-                'error' => 'پسورد اشتباه هست'
+                'error' => 'پسورد اشتباه است.'
             ];
             return $error;
         }
         
-        $user_name = $request->input('name');
         AuthRepository::refresh_session(); 
-        session()->put('user_name', $user_name);
+        session()->put('user_name', $request->input('name'));
 
     }
 

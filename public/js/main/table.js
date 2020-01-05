@@ -28,7 +28,7 @@ function table_body(response,id_body) {
             <td>'+ entry['created_at'] +'</td> \n\
             <td>'+ entry['id'] +'</td> \n\
             <td>'+ entry['user_id'] +'</td> \n\
-            <td><button class="btn btn-outline-danger" onclick="deletegood('+ entry['id'] +')"> حذف</button> </td> \n\
+            <td><button class="btn btn-outline-danger" onclick="delete_good('+ entry['id'] +')"> حذف</button> </td> \n\
         </tr>')
     });
 
