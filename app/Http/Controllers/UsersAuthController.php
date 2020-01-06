@@ -12,21 +12,21 @@ use Facades\App\Repositories\AuthRepository;
 
 use Illuminate\Support\Facades\DB;
 
-class AuthController extends Controller
+class UsersAuthController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('users_auth');
     }
 
-    public function login_index() {
+    public function users_login_index() {
         return view('users.auth.login');
     }
 
-    public function register_index() {
+    public function users_register_index() {
         return view('users.auth.register');
     }
     
-    public function register(Request $request) {
+    public function users_register(Request $request) {
         $register_res['status'] = false;
 
         if(!$request->filled('frist_name')){
@@ -121,11 +121,11 @@ class AuthController extends Controller
         $user = $this->store($request);  
         AuthRepository::refresh_session(); 
         AuthRepository::set_session($user);
-        return redirect('/profile');
+        return redirect('/users/'.$request->session()->get('id').'/goods/create');
     }
 
 
-    public function login(Request $request)
+    public function users_login(Request $request)
     {    
         //check username
         if(!$request->filled('phone_number')) {
@@ -184,7 +184,7 @@ class AuthController extends Controller
         AuthRepository::refresh_session();
         AuthRepository::set_session($user);
         
-        return redirect('/profile');
+        return redirect('/users/'.$request->session()->get('id').'/goods/create');
 
     }
 

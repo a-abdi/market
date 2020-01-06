@@ -13,7 +13,7 @@ $( document ).ready(function() {
 });
 function get_image_info(id) {
     // $(location).attr('href','login');
-    window.location.href = "/image/"+id+"";
+    window.location.href = "/image/"+ id +"";
     //param
     //  /search/user_id/1/good_id/4
     //string

@@ -14,20 +14,20 @@
 Route::get('/','HomeController@index')->name('home');
 Route::get('/goods','HomeController@goods');
 
-Route::get('/profile','ProfileController@profile_index');
-Route::post('/profile','ProfileController@profile');
+Route::get('/users/{user_id}/goods/create','UsersController@users_create_goods_index');
+Route::post('/users/{user_id}/goods/create','UsersController@users_create_goods');
 
-Route::get('/login','AuthController@login_index')->name('login');
-Route::post('/login','AuthController@login');
+Route::get('/users/login','UsersAuthController@users_login_index')->name('login');
+Route::post('/users/login','UsersAuthController@users_login');
 
-Route::get('/register','AuthController@register_index')->name('register');
-Route::post('/register','AuthController@register');
+Route::get('/users/register','UsersAuthController@users_register_index')->name('register');
+Route::post('/users/register','UsersAuthController@users_register');
 
-Route::get('/image/{user_id}','ImageController@get_image_info');
+Route::get('/image/{user_id}','GoodsController@get_image_info');
 
-Route::get('/exit', 'ExitController@exit');
+Route::get('/users/exit','UsersController@user_exit');
 
-Route::get('/user/{user_id}/goods','GoodsController@get_user_goods');
+Route::get('/users/{user_id}/goods','UsersController@get_user_goods');
 
 Route::get('/admin/auth/login','AdminAuthController@login_index');
 Route::post('/admin/auth/login','AdminAuthController@login');

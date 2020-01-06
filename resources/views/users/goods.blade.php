@@ -17,7 +17,7 @@
 
 
 @section('content') 
-    @component('components.users.goods',['data' => $data])
+    @component('users.components.goods',['data' => $data])
 
     @endcomponent
 @endsection

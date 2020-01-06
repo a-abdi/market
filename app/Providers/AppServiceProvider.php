@@ -27,8 +27,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        Blade::component('components.admin.goodstable', 'admin_goods_table');
-        Blade::component('components.main.grid', 'grid');
+        Blade::component('admin.components.goodstable', 'admin_goods_table');
+        Blade::component('layouts.components.grid', 'grid');
 
     }
 }

@@ -32,7 +32,7 @@
                         <!-- show image preview -->
                 </div>
                 <div class="col-12 my-1 text-center">
-                    <button type="button" onclick="save_good()" class="btn btn-primary">
+                    <button type="button" onclick="save_good({{Session::get('id')}})" class="btn btn-primary">
                         ارسال
                     </button>
                 </div>
