@@ -2,6 +2,10 @@
 
 namespace App\Repositories;
 
+use Facades\App\Responses\AuthResponses;
+use Facades\App\Repositories\ErrorMessageRepository;
+use Facades\App\Repositories\SharedRepository;
+
 class AuthRepository
 {
     public function set_session($user)
@@ -82,6 +86,44 @@ class AuthRepository
             ];
         }
         return null;
-
     }
+
+    //********************************************************************************************** */ 
+    
+   
+    
+    // start point chech auth
+    public function auth_admin($request)
+    {
+        return $this->check_name($request);
+    }
+
+    // check input name
+    public function check_name($request)
+    {
+        if(!$request->filled('name')) {
+            return SharedRepository::create_object_error(ErrorMessageRepository::get_name_is_empty_msg());
+        }
+        return $this->check_password($request);
+    }
+
+    // check input password
+    public function check_password($request)
+    {
+        if(!$request->filled('password')) {
+            return SharedRepository::create_object_error(ErrorMessageRepository::get_password_is_empty_msg());
+        }
+        return $this->auth_login($request);
+    }
+
+    // if the name and password is false return error massege
+    public function auth_login($request)
+    {
+        if($request->input('name') != "root" || $request->input('password') != "toor")  {
+            return SharedRepository::create_object_error(ErrorMessageRepository::username_or_password_is_incorrect_msg());
+        }
+        return new \stdClass();
+    }
+
+
 }

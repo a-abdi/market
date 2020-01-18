@@ -14,7 +14,7 @@ class AdminController extends Controller
         $this->middleware('admin');
     }
 
-    public function adminindex()
+    public function admin_index()
     {
         return view('admin.index');
     }

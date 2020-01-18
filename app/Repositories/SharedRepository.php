@@ -52,4 +52,22 @@ class SharedRepository
         return $data;
     }
 
+    // *******************************************************************************************************************
+
+    // check a value if filled return true
+    // public function  check_if_filled($) 
+    // {
+    //     return filled($value);
+    // }
+    public function create_object_error($message) {
+        $res = new \stdClass();
+        $res->error = new \stdclass();
+        $res->error->status = true;
+        $res->error->message = $message;
+
+        return $res;
+    }
+
+
+
 }

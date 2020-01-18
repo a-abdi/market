@@ -32,7 +32,7 @@ Route::get('/users/{user_id}/goods','UsersController@get_user_goods');
 Route::get('/admin/auth/login','AdminAuthController@login_index');
 Route::post('/admin/auth/login','AdminAuthController@login');
 
-Route::get('/admin','AdminController@adminindex');
+Route::get('/admin','AdminController@admin_index');
 
 Route::get('/admin/users','AdminController@admin_users');
 

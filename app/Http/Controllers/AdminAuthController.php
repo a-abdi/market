@@ -6,47 +6,50 @@ use Illuminate\Http\Request;
 
 use Facades\App\Repositories\AuthRepository;
 
+use Facades\App\Repositories\SessionRepository;
+
+use Facades\App\Responses\AuthResponses;
+
 class AdminAuthController extends Controller
 {
 
-    public function __construct(){
+    public function __construct() {
         $this->middleware('admin_auth');
     }
 
-    public function login_index()
-    {
+    public function login_index() {
         return view('admin.auth.login');
     }
 
     public function login(Request $request)
     {
-        $error = AuthRepository::auth_name($request);
-        if($error){
-            return $error;
-        }
-
-        $error = AuthRepository::auth_password($request);
-        if($error){
-            return $error;
-        }
-        
-        if($request->input('name') != "root"){
-            $error = [
-                'error' => 'نام کاربری اشتباه است.'
+        $respons = AuthRepository::auth_admin($request);
+        if(!empty($respons->error->message)){
+            return  [
+                'error' => $respons->error->message
             ];
-            return $error;
         }
 
-        if($request->input('password') != "toor"){
-            $error = [
-                'error' => 'پسورد اشتباه است.'
-            ];
-            return $error;
-        }
+        // $error = AuthRepository::check_password($request);
+        // if($error) {
+        //     return  [
+        //         'error' => $error
+        //     ];
+        // }
         
-        AuthRepository::refresh_session(); 
-        session()->put('user_name', $request->input('name'));
-
+        // $error = AuthRepository::auth_login($request);
+        // if($error){
+        //     return  [
+        //         'error' => $error
+        //     ];
+        // }
+        
+        $admin = new \stdClass();
+        $admin->id = "1";
+        $admin->phone_number = "9394552776";
+        
+        SessionRepository::refresh_session();
+        SessionRepository::set_session($admin);
     }
 
 }
