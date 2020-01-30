@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Profile
+class Users
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class Profile
     public function handle($request, Closure $next)
     {
         if(!$request->session()->has('id'))
-            return redirect('login');
+            return redirect('users/login');
 
         return $next($request);
     }

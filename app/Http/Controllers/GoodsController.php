@@ -10,21 +10,27 @@ class GoodsController extends Controller
 {
     public function __construct() 
     {
-        $this->middleware('profile');
+        // $this->middleware('profile');
     }
 
-    public function get_user_goods($user_id) 
-    {
-        if($user_id != session()->get('id')) {
-            abort(403);
-        }
-
+    public function get_image_info(Request $request, $user_id) {
+        $check_error = DB::table('goods')
+        ->where('id', $user_id)
+        ->get();
+        
+        if(!count($check_error)) {
+            abort(404);       
+        }   
+        
         $data = DB::table('goods')
             ->join('users', 'goods.user_id', '=', 'users.id')
             ->select('users.first_name','users.last_name','users.email','users.phone_number','goods.name','goods.price','goods.img_src','goods.created_at')
-            ->where('user_id', $user_id)
-            ->paginate(5);
-        // dd($data);
-        return view('profile.user_goods',['data'=>$data]);
+            ->where('goods.id', $user_id)
+            ->get();
+            $data=$data['0'];
+
+        return view('goods.information',['data'=>$data]);
+        
+
     }
 }

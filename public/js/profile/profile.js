@@ -1,5 +1,5 @@
 
-function save_good() {
+function save_good(user_id) {
   var name = $('#name').val();
   var price = $('#price').val();
   var imagefile = $('#file');
@@ -9,7 +9,7 @@ function save_good() {
   formData.append("image", imagefile[0].files[0]);
   formData.append("name", name);
   formData.append("price", price);
-  axios.post('/profile', formData, {
+  axios.post('/users/'+ user_id +'/goods/create', formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }

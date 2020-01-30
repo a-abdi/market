@@ -20,7 +20,7 @@
 
 @section('content')
    @grid()
-        @component('layouts.components.admin.tab_search_goods')
+        @component('admin.components.tab_search_goods')
         @endcomponent
     @endgrid
         @admin_goods_table(['data' => $data])

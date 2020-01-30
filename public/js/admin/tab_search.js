@@ -3,36 +3,36 @@ var type = 'name';
 
 function search_name(id_input,id_type_search)
 {
-    $("#"+id_type_search+"").text('بر اساس نام کالا');
-    $("#"+id_input+"").attr("placeholder","نام کالا را وارد کنید");
+    $("#"+id_type_search+"").text('بر اساس نام ');
+    $("#"+id_input+"").attr("placeholder","نام را وارد کنید");
     type = 'name';
 }
 
 function search_price(id_input,id_type_search)
 {
-    $("#"+id_type_search+"").text('بر اساس قیمت کالا');
-    $("#"+id_input+"").attr("placeholder","قیمت کالا را وارد کنید");
+    $("#"+id_type_search+"").text('بر اساس قیمت');
+    $("#"+id_input+"").attr("placeholder","قیمت را وارد کنید");
     type = 'price';
 }
 
 function search_created_at(id_input,id_type_search)
 {
-    $("#"+id_type_search+"").text('بر اساس تاریخ ارسال کالا');
-    $("#"+id_input+"").attr("placeholder","تاریخ ارسال کالا را وارد کنید");
+    $("#"+id_type_search+"").text('بر اساس تاریخ ارسال');
+    $("#"+id_input+"").attr("placeholder","تاریخ ارسال را وارد کنید");
     type = 'created_at';
 }
 
 function search_id(id_input,id_type_search)
 {
-    $("#"+id_type_search+"").text('کالا id بر اساس');
-    $("#"+id_input+"").attr("placeholder","id کالا را وارد کنید");
+    $("#"+id_type_search+"").text('id بر اساس');
+    $("#"+id_input+"").attr("placeholder","id را وارد کنید");
     type = 'id';
 }
 
 function search_user_id(id_input,id_type_search)
 {
-    $("#"+id_type_search+"").text('کالا user_id بر اساس');
-    $("#"+id_input+"").attr("placeholder","user_id کالا را وارد کنید");
+    $("#"+id_type_search+"").text('user_id بر اساس');
+    $("#"+id_input+"").attr("placeholder","user_id را وارد کنید");
     type = 'user_id';
 }
 

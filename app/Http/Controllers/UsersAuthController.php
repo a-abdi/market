@@ -12,26 +12,26 @@ use Facades\App\Repositories\AuthRepository;
 
 use Illuminate\Support\Facades\DB;
 
-class AuthController extends Controller
+class UsersAuthController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('users_auth');
     }
 
-    public function login_index() {
-        return view('auth.login');
+    public function users_login_index() {
+        return view('users.auth.login');
     }
 
-    public function register_index() {
-        return view('auth.register');
+    public function users_register_index() {
+        return view('users.auth.register');
     }
     
-    public function register(Request $request) {
+    public function users_register(Request $request) {
         $register_res['status'] = false;
 
         if(!$request->filled('frist_name')){
             $register_res['msg'] = 'نام را وارد کنید';    
-            return view('auth.register', [
+            return view('users.auth.register', [
                     'register_res' => $register_res
                 ]
             );
@@ -39,7 +39,7 @@ class AuthController extends Controller
 
         if(!$request->filled('last_name')){
             $register_res['msg']='نام خانوادگی را وارد کنید';
-            return view('auth.register', [
+            return view('users.auth.register', [
                     'register_res' => $register_res
                 ]
             );
@@ -47,7 +47,7 @@ class AuthController extends Controller
         
         if(!$request->filled('phone_number')){
             $register_res['msg'] = 'شماره تلفن را وارد کنید';
-            return view('auth.register', [
+            return view('users.auth.register', [
                     'register_res' => $register_res
                 ]
             );
@@ -62,7 +62,7 @@ class AuthController extends Controller
         $request["phone_number"] = $phone;
         if(!$phone){
             $register_res['msg'] = 'شماره تلفن نامعتبر هست';
-            return view('auth.register', [
+            return view('users.auth.register', [
                     'register_res' => $register_res
                 ]
             );
@@ -70,7 +70,7 @@ class AuthController extends Controller
         
         if(!$request->filled('password')) {
             $register_res['msg'] = 'پسورد را وارد کنید';
-            return view('auth.register', [
+            return view('users.auth.register', [
                     'register_res' => $register_res
                 ]
             );
@@ -79,7 +79,7 @@ class AuthController extends Controller
 
         if(!$request->filled('password_confirm')) {
             $register_res['msg'] = 'تایید پسورد را وارد کنید';
-            return view('auth.register',[
+            return view('users.auth.register',[
                     'register_res' => $register_res
                 ]
             );
@@ -88,7 +88,7 @@ class AuthController extends Controller
         
         if($pass_c != $pass){
             $register_res['msg'] = 'پسورد تایید نشد';
-            return view('auth.register', [
+            return view('users.auth.register', [
                     'register_res' => $register_res
                 ]
             );
@@ -98,7 +98,7 @@ class AuthController extends Controller
             $email = $request->input("email");
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $register_res['msg'] = 'ایمیل نامعتبر هست';
-                return view('auth.register', [
+                return view('users.auth.register', [
                         'register_res' => $register_res
                     ]
                 );
@@ -111,7 +111,7 @@ class AuthController extends Controller
         
         if(count($users)) {
             $register_res['msg'] = ' این شماره قبلا ثبت نام کرده';
-            return view('auth.register', [
+            return view('users.auth.register', [
                     'register_res' => $register_res
                 ]
             ); 
@@ -121,16 +121,16 @@ class AuthController extends Controller
         $user = $this->store($request);  
         AuthRepository::refresh_session(); 
         AuthRepository::set_session($user);
-        return redirect('/profile');
+        return redirect('/users/'.$request->session()->get('id').'/goods/create');
     }
 
 
-    public function login(Request $request)
+    public function users_login(Request $request)
     {    
         //check username
         if(!$request->filled('phone_number')) {
             $login_res['msg'] = 'شماره تلفن را وارد کنید';
-            return view('auth.login', [
+            return view('users.auth.login', [
                     'login_res' => $login_res
                 ]
             );
@@ -144,7 +144,7 @@ class AuthController extends Controller
        
         if(!$phone) {
             $login_res['msg'] = 'شماره تلفن نامعتبر هست';
-            return view('auth.login', [
+            return view('users.auth.login', [
                 'login_res' => $login_res
                 ]
             );
@@ -153,7 +153,7 @@ class AuthController extends Controller
         //check password
         if(!$request->filled('password')) {
             $login_res['msg'] = 'پسورد را وارد کنید';
-            return view('auth.login', [
+            return view('users.auth.login', [
                     'login_res' => $login_res
                 ]
             ); 
@@ -175,7 +175,7 @@ class AuthController extends Controller
         
         if(!$res) {
             $login_res['msg'] = 'شماره تلفن یا پسورد اشتباه هست';
-            return view('auth.login', [
+            return view('users.auth.login', [
                 'login_res' => $login_res
                 ]
             );
@@ -184,7 +184,7 @@ class AuthController extends Controller
         AuthRepository::refresh_session();
         AuthRepository::set_session($user);
         
-        return redirect('/profile');
+        return redirect('/users/'.$request->session()->get('id').'/goods/create');
 
     }
 

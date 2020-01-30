@@ -16,7 +16,7 @@ class Authenticate
     public function handle($request, Closure $next)
     {
         if($request->session()->has('id'))
-           return redirect('/profile');
+           return redirect('/users/'.$request->session()->get('id').'/goods/create');
 
         return $next($request);
     }

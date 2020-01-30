@@ -14,9 +14,9 @@ class AdminController extends Controller
         $this->middleware('admin');
     }
 
-    public function adminindex()
+    public function admin_index()
     {
-        return view('admin.admin_index');
+        return view('admin.index');
     }
     
     public function admin_users()
@@ -24,7 +24,6 @@ class AdminController extends Controller
         $data = DB::table('users')
         ->select('users.first_name','users.last_name','users.email','users.phone_number','users.created_at')
         ->get();
-        // dd($data);
        return view('admin.users', ['data'=>$data]);
     }
 
@@ -42,8 +41,6 @@ class AdminController extends Controller
     public function admin_goods_delete(Request $request)
     {
         DB::table('goods')->delete($request->input('id'));
-
-        // dd($request->input('id'));
     }
 
     public function good_search(Request $request)
@@ -55,17 +52,13 @@ class AdminController extends Controller
 
     public function admin_users_detail(Request $request, $user_id)
     {
-
         $users = DB::table('users')
         ->select('users.first_name','users.last_name','users.email','users.phone_number','users.created_at')
         ->where('id','=',$user_id)
         ->get();
-        // dd($users);
-        if(!count($users))
-        {
+        if(!count($users)) {
             abort(404);
         }
-        // dd($users);
         return view('admin.users_detail', ['users'=>$users]);
     }
 }

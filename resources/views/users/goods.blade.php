@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.users.main')
 
 
 @section('title')
@@ -17,7 +17,7 @@
 
 
 @section('content') 
-    @component('layouts.components.users.goods',['data' => $data])
+    @component('users.components.goods',['data' => $data])
 
     @endcomponent
 @endsection

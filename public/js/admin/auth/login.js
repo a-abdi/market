@@ -11,7 +11,7 @@ function login()
     .then(function (response){
         if(response.data.error){
             $("#msg").html(
-                '<div class="alert text-center alert-danger" width="200px"> \n\
+                '<div class="alert text-center alert-danger d-rtl" width="200px"> \n\
                   '+ response.data.error +' \n\
                 </div>'
             )

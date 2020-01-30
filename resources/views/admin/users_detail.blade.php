@@ -18,7 +18,7 @@
 
 @section('content')
     @grid()
-        @component('layouts.components.admin.users_about',['users' => $users])
+        @component('admin.components.users_about',['users' => $users])
         @endcomponent
     @endgrid
 @endsection

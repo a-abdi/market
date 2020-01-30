@@ -15,7 +15,7 @@ class AdminAuth
      */
     public function handle($request, Closure $next)
     {
-        if(session()->has('user_name')){
+        if(session()->has('id')){
            return redirect('/admin');
         }
         

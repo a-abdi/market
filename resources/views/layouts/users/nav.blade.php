@@ -17,10 +17,10 @@
                 <ul class ="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     <li class ="nav-item">
-                        <a class ="nav-link" href="/login">ورود</a>
+                        <a class ="nav-link" href="/users/login">ورود</a>
                     </li>
                     <li class ="nav-item">
-                            <a class="nav-link" href="/register">ثبت نام</a>
+                            <a class="nav-link" href="/users/register">ثبت نام</a>
                     </li>
                 </ul>
             </div>
@@ -60,10 +60,10 @@
                         </a>
                     </li> -->
                     <li class="nav-item mt-1">
-                        <a class="nav-link" id="id_1" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/user/{{ Session::get('id')}}/goods">آگهی های من</a>
+                        <a class="nav-link" id="id_1" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/users/{{ Session::get('id')}}/goods">آگهی های من</a>
                     </li>
                     <li class="nav-item mt-1">
-                        <a class="nav-link" id="id_2" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/profile">ثبت آگهی</a>
+                        <a class="nav-link" id="id_2" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/users/{{Session::get('id')}}/goods/create">ثبت آگهی</a>
                     </li>
                     <li class="nav-item avatar dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,7 +72,7 @@
                         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary text-right" aria-labelledby="navbarDropdownMenuLink-55">
                             <a class="dropdown-item" href="#" id="id_3" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">پروفایل</a>
                             <a class="dropdown-item" href="#" id="id_4" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">سفارش های من</a>
-                            <a class="dropdown-item" href="{{action('ExitController@exit')}}" id="id_5" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">خروج</a>
+                            <a class="dropdown-item" href="{{action('UsersController@user_exit')}}" id="id_5" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">خروج</a>
                         </div>
                     </li>
                 </ul>
