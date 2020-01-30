@@ -10,6 +10,8 @@ use Facades\App\Repositories\SessionRepository;
 
 use Facades\App\Responses\AuthResponses;
 
+use App\Http\Requests\AdminLoginRequest;
+
 class AdminAuthController extends Controller
 {
 
@@ -21,28 +23,8 @@ class AdminAuthController extends Controller
         return view('admin.auth.login');
     }
 
-    public function login(Request $request)
+    public function login(AdminLoginRequest $request)
     {
-        $respons = AuthRepository::auth_admin($request);
-        if(!empty($respons->error->message)){
-            return  [
-                'error' => $respons->error->message
-            ];
-        }
-
-        // $error = AuthRepository::check_password($request);
-        // if($error) {
-        //     return  [
-        //         'error' => $error
-        //     ];
-        // }
-        
-        // $error = AuthRepository::auth_login($request);
-        // if($error){
-        //     return  [
-        //         'error' => $error
-        //     ];
-        // }
         
         $admin = new \stdClass();
         $admin->id = "1";

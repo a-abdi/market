@@ -6,7 +6,7 @@ function login()
     var fomData = new FormData();
     fomData.append("name", user_name);
     fomData.append("password", password);
-
+    
     axios.post('/admin/auth/login', fomData)
     .then(function (response){
         if(response.data.error){
@@ -24,8 +24,17 @@ function login()
         }
 
     })
-    .catch(function (error){
-
+    .catch(function (e){
+        if(e.response.status == 422){
+            $("#msg").html(
+                '<div class="alert text-center alert-danger d-rtl" width="200px"> \n\
+                  '+ e.response.data.errors.name[0] +' \n\
+                </div> \n\
+                <div class="alert text-center alert-danger d-rtl" width="200px"> \n\
+                  '+ e.response.data.errors.password[0] +' \n\
+                </div>'
+            ) 
+        }
     });
         
 }
