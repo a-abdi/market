@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Match_User_Admin;
+use App\Rules\Match_Password_Admin;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdminLoginRequest extends FormRequest
@@ -24,8 +26,8 @@ class AdminLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|min:4|max:255',
-            'password' => 'bail|required|min:4|max:255',
+            'name' => ['bail', 'required', 'min:4', 'max:255', new Match_User_Admin],
+            'password' => ['bail', 'required', 'min:4', 'max:255', new Match_Password_Admin],
         ];
     }
 }

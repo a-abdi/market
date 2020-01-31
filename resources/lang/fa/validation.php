@@ -13,12 +13,12 @@ return [
     |
     */
 
-
+    'match' => ':attribute اشتباه است.',
     'max' => [
-        'string' => ':attribute  کاربری باید حداکثر :min حرف باشد.',
+        'string' => ':attribute  باید حداکثر :max حرف باشد.',
     ],
     'min' => [
-        'string' => ':attribute  کاربری باید حداقل :min حرف باشد.',
+        'string' => ':attribute  باید حداقل :min حرف باشد.',
     ],
   
     'required' => ':attribute را وارد کنید.',
@@ -56,9 +56,8 @@ return [
     */
 
     'attributes' => [
-        'name' => 'نام',
-        'password' => 'پسورد',
-        
+        'name' => 'نام کاربری',
+        'password' => 'رمز',
     ],
 
 ];

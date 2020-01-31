@@ -26,15 +26,20 @@ function login()
     })
     .catch(function (e){
         if(e.response.status == 422){
+            validationErrors = e.response.data.errors;
+            if(validationErrors.name){
+                error = validationErrors.name[0];
+            }else {
+                error = validationErrors.password[0];
+            }
+
             $("#msg").html(
                 '<div class="alert text-center alert-danger d-rtl" width="200px"> \n\
-                  '+ e.response.data.errors.name[0] +' \n\
-                </div> \n\
-                <div class="alert text-center alert-danger d-rtl" width="200px"> \n\
-                  '+ e.response.data.errors.password[0] +' \n\
+                  '+ error +' \n\
                 </div>'
             ) 
+
         }
     });
-        
+    
 }
