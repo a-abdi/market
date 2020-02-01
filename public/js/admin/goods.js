@@ -1,11 +1,8 @@
 $( document ).ready(function() {
     $("#input_search").on("change paste keyup", function() {
+        $('#alert').hide()
         if(!$(this).val()){
-            axios.get('/admin/goods', {
-                params: {
-                  axios: true
-                }
-            })
+            axios.get('/admin/goods/js')
             .then(function (response) {
                 $('#table_body').html('');
                 table_body(response,'table_body');
@@ -17,7 +14,7 @@ $( document ).ready(function() {
             // always executed
             });  
         }
-     });
+    });
 });
 
 

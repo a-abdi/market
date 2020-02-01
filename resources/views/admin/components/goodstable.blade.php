@@ -1,6 +1,6 @@
 <div class="container-fluid mt-1">
     <div class="row justify-content-center">
-        <div class="col-12 d-rtl text-right px-0" id="entry_table">
+        <div class="col-12 d-rtl text-right" id="entry_table">
             @component('layouts.components.table')
                 @slot('titletable')
                     <th scope="col" style="min-width: 10rem;">#</th>

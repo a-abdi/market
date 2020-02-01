@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Facades\App\Repositories\SessionRepository;
 use App\Http\Requests\AdminLoginRequest;
+use Facades\App\Repositories\SessionRepository;
 
 class AdminAuthController extends Controller
 {

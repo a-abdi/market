@@ -1,5 +1,5 @@
 <div class="card mx-auto d-rtl text-right" style="max-width: 700px;">
-    <div class="card-body px-0">
+    <div class="card-body">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-8 py-2">

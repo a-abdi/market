@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Match_User_Admin implements Rule
+class MatchUserAdmin implements Rule
 {
     /**
      * Create a new rule instance.

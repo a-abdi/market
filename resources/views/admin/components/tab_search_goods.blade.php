@@ -9,16 +9,20 @@
                 <div class="input-group-append">
                     <button id="select_type_search" class="btn btn-outline-secondary dropdown-toggle rounded-0 bg-secondary text-white" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">براساس</button>
                     <div class="dropdown-menu d-rtl text-right">
-                    <a class="dropdown-item" onclick="search_name('input_search','select_type_search')" href="#">نام کالا</a>
-                    <a class="dropdown-item" onclick="search_price('input_search','select_type_search')" href="#">قیمت</a>
-                    <a class="dropdown-item" onclick="search_created_at('input_search','select_type_search')" href="#">تاریخ ثبت</a>
-                    <a class="dropdown-item" onclick="search_id('input_search','select_type_search')" href="#">id</a>
-                    <a class="dropdown-item" onclick="search_user_id('input_search','select_type_search')" href="#">user_id</a>
+                        <a class="dropdown-item" onclick="search_name('input_search','select_type_search')" href="#">نام کالا</a>
+                        <a class="dropdown-item" onclick="search_price('input_search','select_type_search')" href="#">قیمت</a>
+                        <a class="dropdown-item" onclick="search_created_at('input_search','select_type_search')" href="#">تاریخ ثبت</a>
+                        <a class="dropdown-item" onclick="search_id('input_search','select_type_search')" href="#">id</a>
+                        <a class="dropdown-item" onclick="search_user_id('input_search','select_type_search')" href="#">user_id</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 px-0 pr-sm-0 d-block d-sm-none mt-1 ml-auto">
+        <div class="col-12 pr-sm-0 d-block d-sm-none mt-1 ml-auto">
             <button class="btn btn-secondary w-100 rounded-0" onclick="good_search('input_search','table_body')">جستجو</button>
+        </div>
+        <div class="col-12 mt-2" id="msg">
+            <!-- show message error -->
         </div>
     </div>
 </div>

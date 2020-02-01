@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Match_Password_Admin implements Rule
+class Alpha implements Rule
 {
     /**
      * Create a new rule instance.
@@ -13,7 +13,7 @@ class Match_Password_Admin implements Rule
      */
     public function __construct()
     {
-        //
+        
     }
 
     /**
@@ -25,7 +25,7 @@ class Match_Password_Admin implements Rule
      */
     public function passes($attribute, $value)
     {
-        return $value === 'toor';
+        return preg_match('/^[پچجحخهعغفقثصضشسیبلاتنمکگوئدذرزطظژؤإأءًٌٍَُِّ\s]+$/u', $value) || (!preg_match('/[^A-Za-z]/', $value));
     }
 
     /**
@@ -35,6 +35,6 @@ class Match_Password_Admin implements Rule
      */
     public function message()
     {
-        return trans('validation.match');
+        return 'لطفا مقدار را حرف وارد کنید.';
     }
 }

@@ -12,7 +12,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-
+    'date' => ':attribute ورودی را تاریخ وارد کنید.',
     'match' => ':attribute اشتباه است.',
     'max' => [
         'string' => ':attribute  باید حداکثر :max حرف باشد.',
@@ -25,6 +25,11 @@ return [
 
     'same' => ':attribute اشتباه است.',
 
+    'numeric' => ':attribute باید عدد باشد.',
+
+    'Alpha' => ':attribute باید حروف باشد.',
+    
+     
     
 
     /*
@@ -58,6 +63,7 @@ return [
     'attributes' => [
         'name' => 'نام کاربری',
         'password' => 'رمز',
+        'value' => 'مقدار',
     ],
 
 ];
