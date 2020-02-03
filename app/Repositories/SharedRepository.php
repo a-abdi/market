@@ -7,12 +7,9 @@ use Illuminate\Support\Facades\DB;
 class SharedRepository
 {
 
-    function check_number_persian($phone){
-        if (!preg_match('/[^۰-۹+]/', $phone))
-        {
-            return true;   
-        }
-        return false;
+    function check_number_persian($phone)
+    {
+        return !preg_match('/[^۰-۹+]/', $phone);  
     }
 
     function convert2english($string) {
@@ -26,21 +23,9 @@ class SharedRepository
         return str_replace($persian, $newNumbers, $string);
     }
 
-    public function convert_phone_number($phone)
+    public function convert_standard_pattern($phone)
     {
-        if(preg_match("/^[+]{1}[9]{1}[8]{1}[1-9]{1}[0-9]{9}$/", $phone)){
-           return mb_substr($phone, -10, 10, 'utf-8');
-        }
-
-        if(preg_match("/^[0]{1}[1-9]{1}[0-9]{9}$/", $phone)){
-            return mb_substr($phone, -10, 10, 'utf-8');
-        }
-
-        if(preg_match("/^[1-9]{1}[0-9]{9}$/", $phone)) {
-            return $phone;
-        }
-
-        return false;
+        return mb_substr($phone, -10, 10, 'utf-8');
     }
 
     public function goods_search($value,$type)
@@ -50,6 +35,11 @@ class SharedRepository
         ->where($type, $value)
         ->get();
         return $data;
+    }
+
+    public function find_id($table, $attribute, $value)
+    {
+        return DB::table($table)->where($attribute, $value)->get();
     }
 
     // *******************************************************************************************************************

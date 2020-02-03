@@ -12,6 +12,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
+    'alpha' => ':attribute باید حروف باشد.',
     'date' => ':attribute ورودی را تاریخ وارد کنید.',
     'match' => ':attribute اشتباه است.',
     'max' => [
@@ -20,18 +21,11 @@ return [
     'min' => [
         'string' => ':attribute  باید حداقل :min حرف باشد.',
     ],
-  
-    'required' => ':attribute را وارد کنید.',
-
-    'same' => ':attribute اشتباه است.',
-
     'numeric' => ':attribute باید عدد باشد.',
-
-    'Alpha' => ':attribute باید حروف باشد.',
+    'required' => ':attribute را وارد کنید.',
+    'same' => ':attribute همخوانی ندارد.',
+    'email' => ':attribute نامعتبر است.',
     
-     
-    
-
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -63,7 +57,13 @@ return [
     'attributes' => [
         'name' => 'نام کاربری',
         'password' => 'رمز',
+        'password_confirm' => 'تایید رمز',
         'value' => 'مقدار',
+        'frist_name' => 'نام',
+        'last_name' => 'نام خانوادگی',
+        'phone_number' => 'شماره تلفن',
+        'email' => 'ایمیل آدرس',
+
     ],
 
 ];
