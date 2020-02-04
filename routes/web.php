@@ -37,8 +37,10 @@ Route::get('/admin','AdminController@admin_index');
 Route::get('/admin/users','AdminController@admin_users');
 
 Route::get('/admin/goods','AdminController@admin_goods');
+Route::get('/admin/goods/js','AdminController@admin_goods_js');
 
-Route::get('/admin/goods/search','AdminController@good_search');
+
+Route::get('/admin/goods/search','AdminController@admin_good_search');
 
 Route::delete('/admin/goods/delete','AdminController@admin_goods_delete');
 

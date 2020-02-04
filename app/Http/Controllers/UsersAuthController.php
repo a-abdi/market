@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\User;
-
-use Facades\App\Repositories\SharedRepository;
-
-use Facades\App\Repositories\AuthRepository;
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\UserLoginRequest;
+use App\Http\Requests\UserRegisterRequest;
+use Facades\App\Repositories\AuthRepository;
+use Facades\App\Repositories\SharedRepository;
 
 class UsersAuthController extends Controller
 {
@@ -26,98 +24,9 @@ class UsersAuthController extends Controller
         return view('users.auth.register');
     }
     
-    public function users_register(Request $request) {
-        $register_res['status'] = false;
-
-        if(!$request->filled('frist_name')){
-            $register_res['msg'] = 'نام را وارد کنید';    
-            return view('users.auth.register', [
-                    'register_res' => $register_res
-                ]
-            );
-        }        
-
-        if(!$request->filled('last_name')){
-            $register_res['msg']='نام خانوادگی را وارد کنید';
-            return view('users.auth.register', [
-                    'register_res' => $register_res
-                ]
-            );
-        }
-        
-        if(!$request->filled('phone_number')){
-            $register_res['msg'] = 'شماره تلفن را وارد کنید';
-            return view('users.auth.register', [
-                    'register_res' => $register_res
-                ]
-            );
-        }
-
-        
-        $status = SharedRepository::check_number_persian($request->input('phone_number'));
-        if($status){
-            $request["phone_number"]= SharedRepository::convert2english($request->input('phone_number'));
-        }
-        $phone = SharedRepository::convert_phone_number($request->input('phone_number'));
-        $request["phone_number"] = $phone;
-        if(!$phone){
-            $register_res['msg'] = 'شماره تلفن نامعتبر هست';
-            return view('users.auth.register', [
-                    'register_res' => $register_res
-                ]
-            );
-        }
-        
-        if(!$request->filled('password')) {
-            $register_res['msg'] = 'پسورد را وارد کنید';
-            return view('users.auth.register', [
-                    'register_res' => $register_res
-                ]
-            );
-        }
-        $pass = $request->input('password');
-
-        if(!$request->filled('password_confirm')) {
-            $register_res['msg'] = 'تایید پسورد را وارد کنید';
-            return view('users.auth.register',[
-                    'register_res' => $register_res
-                ]
-            );
-        }
-        $pass_c = $request->input('password_confirm');
-        
-        if($pass_c != $pass){
-            $register_res['msg'] = 'پسورد تایید نشد';
-            return view('users.auth.register', [
-                    'register_res' => $register_res
-                ]
-            );
-        }
-
-        if($request->filled('email')) {
-            $email = $request->input("email");
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $register_res['msg'] = 'ایمیل نامعتبر هست';
-                return view('users.auth.register', [
-                        'register_res' => $register_res
-                    ]
-                );
-            }
-        }
-        
-        $users = DB::table('users')
-            ->where('phone_number', $phone)
-            ->get();
-        
-        if(count($users)) {
-            $register_res['msg'] = ' این شماره قبلا ثبت نام کرده';
-            return view('users.auth.register', [
-                    'register_res' => $register_res
-                ]
-            ); 
-        }   
-        
-        //store to database        
+    public function users_register(UserRegisterRequest $request) {
+        //store to database
+        $request['phone_number'] = SharedRepository::convert_standard_pattern($request->input('phone_number'));       
         $user = $this->store($request);  
         AuthRepository::refresh_session(); 
         AuthRepository::set_session($user);
@@ -125,62 +34,62 @@ class UsersAuthController extends Controller
     }
 
 
-    public function users_login(Request $request)
+    public function users_login(UserLoginRequest $request)
     {    
         //check username
-        if(!$request->filled('phone_number')) {
-            $login_res['msg'] = 'شماره تلفن را وارد کنید';
-            return view('users.auth.login', [
-                    'login_res' => $login_res
-                ]
-            );
-        }
+        // if(!$request->filled('phone_number')) {
+        //     $login_res['msg'] = 'شماره تلفن را وارد کنید';
+        //     return view('users.auth.login', [
+        //             'login_res' => $login_res
+        //         ]
+        //     );
+        // }
 
-        $status = SharedRepository::check_number_persian($request->input('phone_number'));
-        if($status){
-            $request["phone_number"]= SharedRepository::convert2english($request->input('phone_number'));
-        }
-        $phone = SharedRepository::convert_phone_number($request->input('phone_number'));
+        // $status = SharedRepository::check_number_persian($request->input('phone_number'));
+        // if($status){
+        //     $request["phone_number"]= SharedRepository::convert2english($request->input('phone_number'));
+        // }
+        // $phone = SharedRepository::convert_phone_number($request->input('phone_number'));
        
-        if(!$phone) {
-            $login_res['msg'] = 'شماره تلفن نامعتبر هست';
-            return view('users.auth.login', [
-                'login_res' => $login_res
-                ]
-            );
-        }
+        // if(!$phone) {
+        //     $login_res['msg'] = 'شماره تلفن نامعتبر هست';
+        //     return view('users.auth.login', [
+        //         'login_res' => $login_res
+        //         ]
+        //     );
+        // }
 
         //check password
-        if(!$request->filled('password')) {
-            $login_res['msg'] = 'پسورد را وارد کنید';
-            return view('users.auth.login', [
-                    'login_res' => $login_res
-                ]
-            ); 
-        }
-        $pass = $request->input('password'); 
+        // if(!$request->filled('password')) {
+        //     $login_res['msg'] = 'پسورد را وارد کنید';
+        //     return view('users.auth.login', [
+        //             'login_res' => $login_res
+        //         ]
+        //     ); 
+        // }
+        // $pass = $request->input('password'); 
 
-        $res = true;
-        $user = DB::table('users')
-            ->where('phone_number', $phone)
-            ->first();
+        // $res = true;
+        // $user = DB::table('users')
+        //     ->where('phone_number', $phone)
+        //     ->first();
            
-        if(empty($user)) {
-            $res = false;
-        } else {
-            if($user->password != $pass) {
-                $res = false;
-            }
-        }
+        // if(empty($user)) {
+        //     $res = false;
+        // } else {
+        //     if($user->password != $pass) {
+        //         $res = false;
+        //     }
+        // }
         
-        if(!$res) {
-            $login_res['msg'] = 'شماره تلفن یا پسورد اشتباه هست';
-            return view('users.auth.login', [
-                'login_res' => $login_res
-                ]
-            );
-        }
-    
+        // if(!$res) {
+        //     $login_res['msg'] = 'شماره تلفن یا پسورد اشتباه هست';
+        //     return view('users.auth.login', [
+        //         'login_res' => $login_res
+        //         ]
+        //     );
+        // }
+        $user = SharedRepository::find_user('users', 'phone_number', SharedRepository::convert_standard_pattern($request->input('phone_number')))[0];
         AuthRepository::refresh_session();
         AuthRepository::set_session($user);
         

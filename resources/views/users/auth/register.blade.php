@@ -49,16 +49,15 @@
                     </form>
                     <div class="row justify-content-center text-center">
                         <div class="col-11">
-                            @if(@isset($register_res))
-                                @if($register_res['status'])
-                                    <div class="alert alert-success">
-                                        {{$register_res['msg']}}
-                                    </div>
-                                @else
-                                    <div class="alert alert-danger">
-                                        {{$register_res['msg']}}
-                                    </div>
-                                @endif
+                            @if ($errors->any())
+                                <div class="alert alert-danger pb-2">
+                                    <ul class="d-rtl">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @break
+                                        @endforeach
+                                    </ul>
+                                </div>
                             @endif
                         </div>
                     </div>

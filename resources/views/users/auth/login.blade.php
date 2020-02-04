@@ -40,11 +40,18 @@
                             </div>
                         </div>
                     </form>
-                    @if(@isset($login_res))
-                            <div class="alert alert-danger text-center">
-                                {{$login_res['msg']}}
+                    <div class="text-center">
+                        @if($errors->any())
+                            <div class="alert alert-danger pb-2">
+                                <ul class="d-rtl">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @break
+                                    @endforeach
+                                </ul>
                             </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

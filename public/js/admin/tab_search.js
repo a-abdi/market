@@ -39,6 +39,7 @@ function search_user_id(id_input,id_type_search)
 
 function good_search(input_id,id_table_body)
 {
+    $('#alert').hide();
     var value = document.getElementById(input_id).value;
     axios.get('/admin/goods/search', {
         params: {
@@ -52,8 +53,21 @@ function good_search(input_id,id_table_body)
             table_body(response,id_table_body);
                
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (e) {
+        if(e.response.status == 422){
+          validationErrors = e.response.data.errors;
+          if(validationErrors.value){
+              error = validationErrors.value[0];
+          }else {
+              // error = validationErrors.password[0];
+          }
+
+          $("#msg").html(
+              '<div id="alert" class="alert text-center alert-danger d-rtl" width="200px"> \n\
+                '+ error +' \n\
+              </div>'
+          ) 
+        }
       })
       .finally(function () {
         // always executed
