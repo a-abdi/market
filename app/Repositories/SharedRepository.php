@@ -37,7 +37,7 @@ class SharedRepository
         return $data;
     }
 
-    public function find_id($table, $attribute, $value)
+    public function find_user($table, $attribute, $value)
     {
         return DB::table($table)->where($attribute, $value)->get();
     }

@@ -5,7 +5,7 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Facades\App\Repositories\SharedRepository;
 
-class CheckExistUser implements Rule
+class CheckNotExistUser implements Rule
 {
     /**
      * Create a new rule instance.
@@ -26,7 +26,7 @@ class CheckExistUser implements Rule
      */
     public function passes($attribute, $value)
     {
-        return !count(SharedRepository::find_id('users', $attribute, SharedRepository::convert_standard_pattern($value)));
+        return !count(SharedRepository::find_user('users', $attribute, SharedRepository::convert_standard_pattern($value)));
     }
 
     /**
