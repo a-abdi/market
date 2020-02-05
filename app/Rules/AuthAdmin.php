@@ -4,16 +4,17 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class MatchUserAdmin implements Rule
+class AuthAdmin implements Rule
 {
+    protected $password;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($password)
     {
-        //
+        $this->password = $password;
     }
 
     /**
@@ -25,7 +26,7 @@ class MatchUserAdmin implements Rule
      */
     public function passes($attribute, $value)
     {
-        return $value === 'root';
+        return $value === 'toor' && $this->password === 'root';
     }
 
     /**
@@ -35,6 +36,6 @@ class MatchUserAdmin implements Rule
      */
     public function message()
     {
-        return trans('validation.match');
+        return 'نام کاربری یا پسورد اشتباه است.';
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Facades\App\Repositories\SharedRepository;
 
 class CheckNotExistUser implements Rule
 {

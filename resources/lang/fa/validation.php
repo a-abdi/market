@@ -13,6 +13,7 @@ return [
     |
     */
     'alpha' => ':attribute باید حروف باشد.',
+    'alpha_num' => ':attribute باید حروف یا عدد باشد.',
     'date' => ':attribute ورودی را تاریخ وارد کنید.',
     'email' => ':attribute نامعتبر است.',
     'image' => 'فرمت :attribute ورودی پشتیبانی نمی شود.',

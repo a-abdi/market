@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\Alpha;
-use App\Rules\Numeric;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GoodSearchRequest extends FormRequest
@@ -26,16 +24,16 @@ class GoodSearchRequest extends FormRequest
 
         switch ($type) {
             case "name":
-                $this->validation = ['bail', 'required', new Alpha];
+                $this->validation = ['bail', 'required', 'alpha_num'];
                 break;
             case "price":
-                $this->validation = ['bail', 'required', new Numeric];
+                $this->validation = ['bail', 'required', 'numeric'];
                 break;
             case "id":
-                $this->validation = ['bail', 'required', new Numeric];
+                $this->validation = ['bail', 'required', 'numeric'];
                 break;
             case "user_id":
-                $this->validation = ['bail', 'required', new Numeric];
+                $this->validation = ['bail', 'required', 'numeric'];
                 break;
             case "created_at":
                 $this->validation = ['bail', 'required', 'date'];

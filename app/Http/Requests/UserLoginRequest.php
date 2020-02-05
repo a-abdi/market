@@ -36,7 +36,7 @@ class UserLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone_number'     => ['bail', 'required', 'min:10',  'max:13',  new PatternPhoneNumber,],
+            'phone_number'     => ['bail', 'required',  new PatternPhoneNumber,],
             'password'         => ['bail', 'required', 'max:50',  new AuthUserLogin($this->input('phone_number'))],
         ];
     }
