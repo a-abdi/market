@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Good;
-
-use Illuminate\Support\Facades\DB;
-
-use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\Storage;
-
-use Facades\App\Repositories\AuthRepository;
-
 use Cookie;
+use App\Models\Good;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Facades\App\Repositories\AuthRepository;
+use App\Http\Requests\UserCreateGoodsRequest;
 
 class UsersController extends Controller
 {
@@ -27,23 +23,8 @@ class UsersController extends Controller
         return view('users.goods.create');
     }
 
-    public function users_create_goods(Request $request) 
+    public function users_create_goods(UserCreateGoodsRequest $request) 
     {    
-        $error = AuthRepository::auth_name($request);
-        if($error){
-            return $error;
-        }
-
-        $error = AuthRepository::auth_price($request);
-        if($error){
-            return $error;
-        }
-
-        $error = AuthRepository::auth_image($request);
-        if($error){
-            return $error;
-        }
-
         //store image to disk
         $img =  $request->file('image');
         $img_name = $img->store('images','public'); 
@@ -71,7 +52,7 @@ class UsersController extends Controller
     public function get_user_goods($user_id) 
     {
         if($user_id != session()->get('id')) {
-            abort(403);
+            abort(404);
         }
 
         $data = DB::table('goods')

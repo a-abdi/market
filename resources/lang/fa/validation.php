@@ -14,6 +14,8 @@ return [
     */
     'alpha' => ':attribute باید حروف باشد.',
     'date' => ':attribute ورودی را تاریخ وارد کنید.',
+    'email' => ':attribute نامعتبر است.',
+    'image' => 'فرمت :attribute ورودی پشتیبانی نمی شود.',
     'match' => ':attribute اشتباه است.',
     'max' => [
         'string' => ':attribute  باید حداکثر :max حرف باشد.',
@@ -24,7 +26,6 @@ return [
     'numeric' => ':attribute باید عدد باشد.',
     'required' => ':attribute را وارد کنید.',
     'same' => ':attribute همخوانی ندارد.',
-    'email' => ':attribute نامعتبر است.',
     
     /*
     |--------------------------------------------------------------------------
@@ -63,6 +64,8 @@ return [
         'last_name' => 'نام خانوادگی',
         'phone_number' => 'شماره تلفن',
         'email' => 'ایمیل آدرس',
+        'price' => 'قیمت',
+        'image' => 'تصویر',
 
     ],
 

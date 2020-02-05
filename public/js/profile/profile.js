@@ -32,7 +32,24 @@ function save_good(user_id) {
         $("#file").val("");
       }
     })
-.catch(function (error) {
+.catch(function (e) {
+  if(e.response.status == 422){
+    validationErrors = e.response.data.errors;
+    if(validationErrors.name){
+        error = validationErrors.name[0];
+    }else if(validationErrors.price) {
+        error = validationErrors.price[0];
+    }else{
+      error = validationErrors.image[0];
+    }
+
+    $("#msg").html(
+        '<div class="alert text-center alert-danger d-rtl" width="200px"> \n\
+          '+ error +' \n\
+        </div>'
+    ) 
+
+}
     
 });
 }
