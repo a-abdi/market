@@ -15,9 +15,10 @@ class Users
      */
     public function handle($request, Closure $next)
     {
-        if(!$request->session()->has('id'))
+        if(!$request->session()->has('user_id')) {
             return redirect('users/login');
-
+        }
+        
         return $next($request);
     }
 }

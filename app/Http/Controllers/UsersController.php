@@ -7,7 +7,6 @@ use App\Models\Good;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Facades\App\Repositories\AuthRepository;
 use App\Http\Requests\UserCreateGoodsRequest;
 
 class UsersController extends Controller
@@ -19,7 +18,7 @@ class UsersController extends Controller
 
     public function users_create_goods_index() 
     {
-        Cookie::queue('user_id', session()->get('id'));
+        Cookie::queue('user_id', session()->get('user_id'));
         return view('users.goods.create');
     }
 
@@ -39,7 +38,7 @@ class UsersController extends Controller
         $good = new Good; 
         $good->name = $request->input('name');
         $good->price = $request->input('price');
-        $good->user_id = session('id');
+        $good->user_id = session('user_id');
         $good->img_src = $img_src;
         $good->save();
     }
@@ -51,7 +50,7 @@ class UsersController extends Controller
 
     public function get_user_goods($user_id) 
     {
-        if($user_id != session()->get('id')) {
+        if($user_id != session()->get('user_id')) {
             abort(404);
         }
 

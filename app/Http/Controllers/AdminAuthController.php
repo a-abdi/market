@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Facades\App\Models\SessionModel;
 use App\Http\Requests\AdminLoginRequest;
-use Facades\App\Repositories\SessionRepository;
 
 class AdminAuthController extends Controller
 {
@@ -23,8 +23,8 @@ class AdminAuthController extends Controller
         $admin->id = "1";
         $admin->phone_number = "9394552776";
         
-        SessionRepository::refresh_session();
-        SessionRepository::set_session($admin);
+        SessionModel::refresh_session();
+        SessionModel::admin_set_session($admin);
     }
 
 }

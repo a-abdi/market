@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
+use Facades\App\Models\SharedModel;
 use Illuminate\Contracts\Validation\Rule;
-use Facades\App\Repositories\SharedRepository;
 
 class AuthUserLogin implements Rule
 {
@@ -27,8 +27,8 @@ class AuthUserLogin implements Rule
      */
     public function passes($attribute, $value)
     {
-        return SharedRepository::
-        find_user('users', 'phone_number', SharedRepository::
+        return SharedModel::
+        find_user('users', 'phone_number', SharedModel::
         convert_standard_pattern($this->phone_number))[0]->password === $value;
     }
 

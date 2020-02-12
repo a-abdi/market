@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Facades\App\Models\SharedModel;
+use Facades\App\Models\SessionModel;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
-use Facades\App\Repositories\AuthRepository;
-use Facades\App\Repositories\SharedRepository;
 
 class UsersAuthController extends Controller
 {
@@ -25,20 +25,20 @@ class UsersAuthController extends Controller
     
     public function users_register(UserRegisterRequest $request) {
         //store to database
-        $request['phone_number'] = SharedRepository::convert_standard_pattern($request->input('phone_number'));       
+        $request['phone_number'] = SharedModel::convert_standard_pattern($request->input('phone_number'));       
         $user = $this->store($request);  
-        AuthRepository::refresh_session(); 
-        AuthRepository::set_session($user);
-        return redirect('/users/'.$request->session()->get('id').'/goods/create');
+        SessionModel::refresh_session(); 
+        SessionModel::user_set_session($user);
+        return redirect('/users/'.$request->session()->get('user_id').'/goods/create');
     }
 
 
     public function users_login(UserLoginRequest $request)
     {    
-        $user = SharedRepository::find_user('users', 'phone_number', SharedRepository::convert_standard_pattern($request->input('phone_number')))[0];
-        AuthRepository::refresh_session();
-        AuthRepository::set_session($user);
-        return redirect('/users/'.$request->session()->get('id').'/goods/create');
+        $user = SharedModel::find_user('users', 'phone_number', SharedModel::convert_standard_pattern($request->input('phone_number')))[0];
+        SessionModel::refresh_session();
+        SessionModel::user_set_session($user);
+        return redirect('/users/'.$request->session()->get('user_id').'/goods/create');
     }
 
     //store information register in database

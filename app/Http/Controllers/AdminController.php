@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Facades\App\Models\SharedModel;
 use App\Http\Requests\GoodSearchRequest;
-use Facades\App\Repositories\SharedRepository;
 
 class AdminController extends Controller
 {
@@ -51,7 +51,7 @@ class AdminController extends Controller
 
     public function admin_good_search(GoodSearchRequest $request)
     {
-        $data = SharedRepository::goods_search($request->input('value'),$request->input('type'));
+        $data = SharedModel::goods_search($request->input('value'),$request->input('type'));
         return $data;
     }
 

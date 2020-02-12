@@ -5,8 +5,8 @@ namespace App\Http\Requests;
 use App\Rules\Alpha;
 use App\Rules\CheckNotExistUser;
 use App\Rules\PatternPhoneNumber;
+use Facades\App\Models\SharedModel;
 use Illuminate\Foundation\Http\FormRequest;
-use Facades\App\Repositories\SharedRepository;
 
 class UserRegisterRequest extends FormRequest
 {
@@ -24,8 +24,8 @@ class UserRegisterRequest extends FormRequest
     protected function prepareForValidation()
     {
         if($this->filled('phone_number')) {
-            if(SharedRepository::check_number_persian($this->input('phone_number'))) {
-                $this['phone_number'] = SharedRepository::convert2english($this->input('phone_number'));
+            if(SharedModel::check_number_persian($this->input('phone_number'))) {
+                $this['phone_number'] = SharedModel::convert2english($this->input('phone_number'));
             }
         }
     }

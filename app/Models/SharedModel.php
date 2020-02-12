@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
 
-class SharedRepository
+class SharedModel
 {
 
     function check_number_persian($phone)

@@ -1,5 +1,5 @@
             
-@if(!session('phone_number'))
+@if(!session('user_phone_number'))
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand py-0" href="/">
@@ -60,10 +60,10 @@
                         </a>
                     </li> -->
                     <li class="nav-item mt-1">
-                        <a class="nav-link" id="id_1" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/users/{{ Session::get('id')}}/goods">آگهی های من</a>
+                        <a class="nav-link" id="id_1" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/users/{{ Session::get('user_id')}}/goods">آگهی های من</a>
                     </li>
                     <li class="nav-item mt-1">
-                        <a class="nav-link" id="id_2" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/users/{{Session::get('id')}}/goods/create">ثبت آگهی</a>
+                        <a class="nav-link" id="id_2" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/users/{{Session::get('user_id')}}/goods/create">ثبت آگهی</a>
                     </li>
                     <li class="nav-item avatar dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

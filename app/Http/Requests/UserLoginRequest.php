@@ -4,8 +4,9 @@ namespace App\Http\Requests;
 
 use App\Rules\AuthUserLogin;
 use App\Rules\PatternPhoneNumber;
+use Facades\App\Models\SharedModel;
 use Illuminate\Foundation\Http\FormRequest;
-use Facades\App\Repositories\SharedRepository;
+
 
 class UserLoginRequest extends FormRequest
 {
@@ -22,8 +23,8 @@ class UserLoginRequest extends FormRequest
     protected function prepareForValidation()
     {
         if($this->filled('phone_number')) {
-            if(SharedRepository::check_number_persian($this->input('phone_number'))) {
-                $this['phone_number'] = SharedRepository::convert2english($this->input('phone_number'));
+            if(SharedModel::check_number_persian($this->input('phone_number'))) {
+                $this['phone_number'] = SharedModel::convert2english($this->input('phone_number'));
             }
         }
     }
