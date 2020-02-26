@@ -38,7 +38,7 @@ class UserRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'frist_name'       => ['bail', 'required', 'min:3',   'max:50',  'alpha',],
+            'first_name'       => ['bail', 'required', 'min:3',   'max:50',  'alpha',],
             'last_name'        => ['bail', 'required', 'min:3',   'max:100', 'alpha'],
             'phone_number'     => ['bail', 'required', 'min:10',  'max:13',   new PatternPhoneNumber, new CheckNotExistUser],
             'email'            => ['bail', 'nullable', 'min:8',   'max:320', 'email' ],

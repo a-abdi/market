@@ -23,18 +23,9 @@ class SharedModel
         return str_replace($persian, $newNumbers, $string);
     }
 
-    public function convert_standard_pattern($phone)
+    public function standard_phone_number($phone)
     {
         return mb_substr($phone, -10, 10, 'utf-8');
-    }
-
-    public function goods_search($value,$type)
-    {
-        $data = DB::table('goods')
-        ->select('name','price','img_src','created_at','id','user_id')
-        ->where($type, $value)
-        ->get();
-        return $data;
     }
 
     public function find_user($table, $attribute, $value)
@@ -42,22 +33,34 @@ class SharedModel
         return DB::table($table)->where($attribute, $value)->get();
     }
 
-    // *******************************************************************************************************************
-
-    // check a value if filled return true
-    // public function  check_if_filled($) 
-    // {
-    //     return filled($value);
-    // }
-    public function create_object_error($message) {
-        $res = new \stdClass();
-        $res->error = new \stdclass();
-        $res->error->status = true;
-        $res->error->message = $message;
-
-        return $res;
+    public function store_file($file ,$sub_address ,$address)
+    {
+        return 'storage/'.$file->store($sub_address, $address);
     }
 
+    public function create_object_good($request, $img_src)
+    {
+        $good = new \stdClass();
+        $good->name = $request->input('name');
+        $good->price = $request->input('price');
+        $good->user_id = session('user_id');
+        $good->img_src = $img_src;
+        return $good;
+    }
 
+    public function goods_select_except($except)
+    {
+        $columns = array(
+            'price', 'name','user_id', 'id', 'img_src', 'created_at', 'updated_at'
+        );
+        return array_diff( $columns, (array) $except );
+    }
 
+    public function users_select_except($except)
+    {
+        $columns = array(
+            'first_name', 'last_name', 'phone_number', 'email', 'password', 'id', 'created_at', 'updated_at'
+        );
+        return array_diff( $columns, (array) $except );
+    }
 }

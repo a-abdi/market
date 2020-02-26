@@ -3,14 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Facades\App\Models\SharedModel;
 use App\Http\Requests\GoodSearchRequest;
+use App\Contracts\Repositories\UserRepositoryInterface;
+use App\Contracts\Repositories\GoodsRepositoryInterface;
+
+
+
 
 class AdminController extends Controller
 {
-    public function __construct(){
+    protected $user;
+    protected $good;
+    
+    public function __construct(UserRepositoryInterface $user, GoodsRepositoryInterface $good) 
+    {
         $this->middleware('admin');
+        $this->user = $user;
+        $this->good = $good;
     }
 
     public function admin_index()
@@ -20,47 +30,35 @@ class AdminController extends Controller
     
     public function admin_users()
     {
-        $data = DB::table('users')
-        ->select('users.first_name','users.last_name','users.email','users.phone_number','users.created_at')
-        ->get();
-       return view('admin.users', ['data'=>$data]);
+        $users = $this->user->select(SharedModel::users_select_except(['id', 'password', 'updated_at'])); 
+        return view('admin.users', ['data'=> $users]);
     }
 
     public function admin_goods()
     {
-        $data = DB::table('goods')
-        ->select('name','price','img_src','created_at','id','user_id')
-        ->get();
-        return view('admin.goods',['data'=>$data]);
+        $goods = $this->good->select(SharedModel::goods_select_except(['updated_at']));
+        return view('admin.goods',['data'=>$goods]);
     }
 
     public function admin_goods_js()
     {
-        $data = DB::table('goods')
-        ->select('name','price','img_src','created_at','id','user_id')
-        ->get();
-        return $data;
+        return $this->good->select(SharedModel::goods_select_except(['updated_at']));
     }
 
     
     public function admin_goods_delete(Request $request)
     {
-        $message = DB::table('goods')->delete($request->input('id'));
-        return $message;
+        return $this->good->delete($request->input('id'));
     }
 
     public function admin_good_search(GoodSearchRequest $request)
     {
-        $data = SharedModel::goods_search($request->input('value'),$request->input('type'));
-        return $data;
+        return $this->good->search(SharedModel::goods_select_except(['updated_at']), $request->input('value'), $request->input('type'));
     }
 
     public function admin_users_detail(Request $request, $user_id)
     {
-        $users = DB::table('users')
-        ->select('users.first_name','users.last_name','users.email','users.phone_number','users.created_at')
-        ->where('id','=',$user_id)
-        ->get();
+        $users = $this->user->search(SharedModel::users_select_except(['id', 'password', 'updated_at']), $user_id, 'id');
         if(!count($users)) {
             abort(404);
         }

@@ -26,7 +26,7 @@ class CheckNotExistUser implements Rule
      */
     public function passes($attribute, $value)
     {
-        return !count(SharedModel::find_user('users', $attribute, SharedModel::convert_standard_pattern($value)));
+        return !count(SharedModel::find_user('users', $attribute, SharedModel::standard_phone_number($value)));
     }
 
     /**

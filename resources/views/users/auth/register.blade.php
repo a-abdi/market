@@ -28,7 +28,7 @@
                                 <input type="text" name="last_name" class="form-control text-right" placeholder="نام خانوادگی" tabindex="2">
                             </div>
                             <div class="col-sm-5 col-11 my-1">
-                                <input type="text" name="frist_name" class="form-control text-right" placeholder="نام" tabindex="1">
+                                <input type="text" name="first_name" class="form-control text-right" placeholder="نام" tabindex="1">
                             </div> 
                             <div class="col-sm-5 col-11 my-1">
                                 <input type="email" name="email" class="form-control text-right" placeholder="ایمیل" tabindex="4">

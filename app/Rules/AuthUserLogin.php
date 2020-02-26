@@ -29,7 +29,7 @@ class AuthUserLogin implements Rule
     {
         return SharedModel::
         find_user('users', 'phone_number', SharedModel::
-        convert_standard_pattern($this->phone_number))[0]->password === $value;
+        standard_phone_number($this->phone_number))[0]->password === $value;
     }
 
     /**
