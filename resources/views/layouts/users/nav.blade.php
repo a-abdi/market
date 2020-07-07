@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand py-0" href="/">
-                <img src="/gif.png" alt="خانه" class ="pointer" height="45" width="45">
+                <img src="{{asset('/gif.png')}}" alt="خانه" class ="pointer" height="45" width="45">
             </a>
             <button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navbarSupportedContent" aria-controls ="navbarSupportedContent" aria-expanded ="false" aria-label ="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand py-0" href="/">
-                <img src="/gif.png" alt="خانه" class ="pointer" height="45" width="45">
+                <img src="{{asset('/gif.png')}}" alt="خانه" class ="pointer" height="45" width="45">
             </a>
 
             <button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navbarSupportedContent-555" aria-controls ="navbarSupportedContent-555" aria-expanded ="false" aria-label ="Toggle navigation">
@@ -67,7 +67,7 @@
                     </li>
                     <li class="nav-item avatar dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0" alt="avatar image" width="40" height="40">
+                            <img src="https://img.icons8.com/fluent/48/000000/user-male-circle.png" class="rounded-circle z-depth-0" alt="avatar image" width="40" height="40">
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary text-right" aria-labelledby="navbarDropdownMenuLink-55">
                             <a class="dropdown-item" href="#" id="id_3" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">پروفایل</a>
