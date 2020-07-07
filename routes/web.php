@@ -23,7 +23,7 @@ Route::post('/users/login','UsersAuthController@users_login');
 Route::get('/users/register','UsersAuthController@users_register_index')->name('register');
 Route::post('/users/register','UsersAuthController@users_register');
 
-Route::get('/image/{user_id}','GoodsController@get_image_info');
+Route::get('/image/{image_id}','GoodsController@get_image_info');
 
 Route::get('/users/exit','UsersController@user_exit');
 

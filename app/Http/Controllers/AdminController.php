@@ -8,9 +8,6 @@ use App\Http\Requests\GoodSearchRequest;
 use App\Contracts\Repositories\UserRepositoryInterface;
 use App\Contracts\Repositories\GoodsRepositoryInterface;
 
-
-
-
 class AdminController extends Controller
 {
     protected $user;

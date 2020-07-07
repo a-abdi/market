@@ -12,15 +12,17 @@ use Facades\App\Models\SharedModel;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserCreateGoodsRequest;
 use App\Contracts\Repositories\UserRepositoryInterface;
+use App\Contracts\Repositories\GoodsRepositoryInterface;
 
 
 class UsersController extends Controller
 {
     protected $good;
 
-    public function __construct(UserRepositoryInterface $good) 
+    public function __construct(GoodsRepositoryInterface $good) 
     {
         $this->middleware('users');
+        $this->good = $good;
     }
 
     public function users_create_goods_index() 
@@ -46,8 +48,8 @@ class UsersController extends Controller
         if($user_id != session()->get('user_id')) {
             abort(404);
         }
-
-        $goods = $this->good->with('user');
+// dd('sik');
+        $goods = $this->good->with_paginate('user', 5);
         // $data = DB::table('goods')
         //     ->join('users', 'goods.user_id', '=', 'users.id')
         //     ->select('users.first_name','users.last_name','users.email','users.phone_number','goods.name','goods.price','goods.img_src','goods.created_at')
