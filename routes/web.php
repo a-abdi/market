@@ -26,6 +26,7 @@ Route::post('/users/register','UsersAuthController@users_register');
 Route::get('/image/{image_id}','GoodsController@get_image_info');
 
 Route::get('/users/exit','UsersController@user_exit');
+Route::get('/users/profile','UsersController@user_profile');
 
 Route::get('/users/{user_id}/goods','UsersController@get_user_goods');
 

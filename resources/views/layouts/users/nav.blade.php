@@ -30,9 +30,12 @@
         
     <!--Navbar -->
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+        <div class="container-fluid mx-4">
             <a class="navbar-brand py-0" href="/">
                 <img src="{{asset('/gif.png')}}" alt="خانه" class ="pointer" height="45" width="45">
+            </a>
+            <a class="navbar-brand py-0" href="#">
+                <img src="https://img.icons8.com/officexs/16/000000/appointment-reminders.png"/>
             </a>
 
             <button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navbarSupportedContent-555" aria-controls ="navbarSupportedContent-555" aria-expanded ="false" aria-label ="Toggle navigation">
@@ -70,7 +73,7 @@
                             <img src="https://img.icons8.com/fluent/48/000000/user-male-circle.png" class="rounded-circle z-depth-0" alt="avatar image" width="40" height="40">
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary text-right" aria-labelledby="navbarDropdownMenuLink-55">
-                            <a class="dropdown-item" href="#" id="id_3" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">پروفایل</a>
+                            <a class="dropdown-item" href="/users/profile" id="id_3" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">پروفایل</a>
                             <a class="dropdown-item" href="#" id="id_4" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">سفارش های من</a>
                             <a class="dropdown-item" href="{{action('UsersController@user_exit')}}" id="id_5" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">خروج</a>
                         </div>

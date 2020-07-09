@@ -42,13 +42,16 @@ class UsersController extends Controller
         session()->flush();
         return redirect('users/login');
     }
+    
+    public function user_profile() {
+        return view('users/profile');
+    }
 
     public function get_user_goods($user_id) 
     {
         if($user_id != session()->get('user_id')) {
             abort(404);
         }
-// dd('sik');
         $goods = $this->good->with_paginate('user', 5);
         // $data = DB::table('goods')
         //     ->join('users', 'goods.user_id', '=', 'users.id')
@@ -58,4 +61,5 @@ class UsersController extends Controller
         // // dd($data);
         return view('users.goods', ['data'=>$goods]);
     }
+
 }
