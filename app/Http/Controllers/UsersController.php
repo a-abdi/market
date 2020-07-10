@@ -47,6 +47,10 @@ class UsersController extends Controller
         return view('users/profile');
     }
 
+    public function user_ordering_new(){
+        return view('users/odering/new');
+    }
+
     public function get_user_goods($user_id) 
     {
         if($user_id != session()->get('user_id')) {

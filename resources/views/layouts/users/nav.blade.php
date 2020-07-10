@@ -73,9 +73,9 @@
                             <img src="https://img.icons8.com/fluent/48/000000/user-male-circle.png" class="rounded-circle z-depth-0" alt="avatar image" width="40" height="40">
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary text-right" aria-labelledby="navbarDropdownMenuLink-55">
-                            <a class="dropdown-item" href="/users/profile" id="id_3" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">پروفایل</a>
-                            <a class="dropdown-item" href="#" id="id_4" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">سفارش های من</a>
-                            <a class="dropdown-item" href="{{action('UsersController@user_exit')}}" id="id_5" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">خروج</a>
+                            <a class="dropdown-item" href="/users/{{session::get('user_id')}}/profile" id="id_3" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">پروفایل</a>
+                            <a class="dropdown-item" href="/users/{{session::get('user_id')}}/ordering/new" id="id_4" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">سفارش های جدید</a>
+                            <a class="dropdown-item" href="/users/{{session::get('user_id')}}/exit" id="id_5" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)">خروج</a>
                         </div>
                     </li>
                 </ul>

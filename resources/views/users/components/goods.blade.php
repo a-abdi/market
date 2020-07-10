@@ -50,7 +50,7 @@
                                                                 <h6>بازدید: 100</h6>
                                                             </div>
                                                             <div class="col-sm-6 text-right mt-2 d-none d-sm-block">
-                                                                <button type="button" class="btn btn-outline-secondary">سفارش ها</button>
+                                                                <h5 class="">تعداد سفارش ها: 100</h5>
                                                             </div>
                                                             <div class="col-sm-6 mt-2 text-center d-ltr d-none d-sm-block">
                                                                 <div class="cotainer-fluid">
@@ -63,7 +63,7 @@
                                                             </div>
                                                             </div>
                                                             <div class="col-12 text-center d-block d-sm-none s-f">
-                                                                <button type="button" class="btn btn-outline-secondary mt-1"><small>سفارش ها</small></button>
+                                                                <h6 class="">تعداد سفارش ها: 100</h5>
                                                                 <button type="button" class="btn btn-outline-warning mt-1"><small>ویرایش</small></button>
                                                                 <button type="button" class="btn btn-outline-danger mt-1"><small>حذف</small></button>
                                                             </div>
