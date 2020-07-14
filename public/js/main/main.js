@@ -5,13 +5,13 @@ function exit(){
 function enabel_shadow(elment)
 {
     
-    $("#"+ elment.id +"")
+    $("#"+ elment.id)
         .addClass("shadow-sm text-primary");
 }
 
 function disable_shadow(elment)
 {
-    $("#"+ elment.id +"")
+    $("#"+ elment.id)
         .removeClass("shadow-sm text-primary");
     
 }

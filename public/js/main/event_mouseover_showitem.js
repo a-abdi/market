@@ -1,13 +1,13 @@
 function enabel_show_seller(id){
-    $("#"+id+"")
+    $("#"+id)
         .removeClass("d-none");
-    $("#"+id+"")
+    $("#"+id)
         .addClass("d-block");
 }
 
 function disable_show_seller(id){
-    $("#"+id+"")
+    $("#"+id)
         .removeClass("d-block");
-    $("#"+id+"")
+    $("#"+id)
         .addClass("d-none");
 }

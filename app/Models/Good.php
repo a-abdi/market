@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Good extends Model
 {
-    protected $fillable = ['name', 'price', 'user_id', 'img_src'];
+    protected $fillable = ['name', 'price', 'user_id', 'img_src', 'post_id'];
 
     public function user()
     {

@@ -1,5 +1,5 @@
 function show_avetar(response,i,id){
-    $("#"+id+"").html(
+    $("#"+id).html(
     '<span class="s-f text d-rtl">زمان ارسال '+response.data[i]["created_at"]+'</span> \n\
     <div class="border-0 card mb-1"> \n\
         <div class="row no-gutters"> \n\

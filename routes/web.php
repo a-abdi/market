@@ -16,12 +16,14 @@ Route::get('/goods','HomeController@goods');
 
 Route::get('/users/{user_id}/goods/create','UsersController@users_create_goods_index');
 Route::post('/users/{user_id}/goods/create','UsersController@users_create_goods');
+Route::post('/posts/{post_id}/comments/create','UsersController@comments_create');
 
 Route::get('/users/login','UsersAuthController@users_login_index')->name('login');
 Route::post('/users/login','UsersAuthController@users_login');
 
 Route::get('/users/register','UsersAuthController@users_register_index')->name('register');
 Route::post('/users/register','UsersAuthController@users_register');
+
 
 Route::get('/image/{image_id}','GoodsController@get_image_info');
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Cookie;
+use App\Post;
+use App\Comment;
 use App\Models\User;
 use App\Models\Good;
 use Illuminate\Http\Request;
@@ -33,9 +35,15 @@ class UsersController extends Controller
 
     public function users_create_goods(UserCreateGoodsRequest $request) 
     {    
+        $post = new Post();
+        $post->title = $request->get('name');
+        $post->user_id = session('user_id');
+        $post->type = 'goods';
+        $post->save();
         $img_src = SharedModel::store_file($request->file('image'), 'images', 'public');
-        $good = SharedModel::create_object_good($request, $img_src);
+        $good = SharedModel::create_object_good($request, $img_src, $post->id);
         $new_good = $this->good->create((array) $good);
+
     }
 
     public function user_exit() {
@@ -49,6 +57,15 @@ class UsersController extends Controller
 
     public function user_ordering_new(){
         return view('users/odering/new');
+    }
+
+    public function comments_create(Request $request,$post_id){
+        $comment = new Comment();
+        $comment->parent_id = $request->get('parent_id');
+        $comment->body = $request->get('comment_body');
+        $comment->user_id = session('user_id');
+        $comment->post_id = $post_id;
+        $comment->save();
     }
 
     public function get_user_goods($user_id) 
