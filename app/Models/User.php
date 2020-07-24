@@ -12,4 +12,9 @@ class User extends Model
     {
         return $this->hasMany('app\models\good');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('app\models\comment');
+    }
 }

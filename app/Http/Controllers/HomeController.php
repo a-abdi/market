@@ -21,6 +21,6 @@ class HomeController extends Controller
     }
     public function goods()
     {
-        return $this->good->join_goods_users();
+        return $this->good->get_all_goods_data();
     }
 }

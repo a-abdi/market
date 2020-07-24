@@ -13,6 +13,7 @@
 
 Route::get('/','HomeController@index')->name('home');
 Route::get('/goods','HomeController@goods');
+Route::get('/posts/{post_id}/comments', 'UsersController@comments_view');
 
 Route::get('/users/{user_id}/goods/create','UsersController@users_create_goods_index');
 Route::post('/users/{user_id}/goods/create','UsersController@users_create_goods');
@@ -25,7 +26,7 @@ Route::get('/users/register','UsersAuthController@users_register_index')->name('
 Route::post('/users/register','UsersAuthController@users_register');
 
 
-Route::get('/image/{image_id}','GoodsController@get_image_info');
+Route::get('/image/{image_id}','GoodsController@goods_view');
 
 Route::get('/users/{user_id}/exit','UsersController@user_exit');
 Route::get('/users/{user_id}/profile','UsersController@user_profile');

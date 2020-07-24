@@ -173,6 +173,10 @@ return [
         App\Providers\BladeServiceProvider::class,
         App\Providers\Repositories\UserServiceProvider::class,
         App\Providers\Repositories\GoodsServiceProvider::class,
+        App\Providers\Repositories\CommentServiceProvider::class,
+        App\Providers\Repositories\PostServiceProvider::class,
+
+
 
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,

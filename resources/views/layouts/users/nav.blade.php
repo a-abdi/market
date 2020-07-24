@@ -31,16 +31,18 @@
     <!--Navbar -->
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container-fluid mx-4">
-            <a class="navbar-brand py-0" href="/">
-                <img src="{{asset('/gif.png')}}" alt="خانه" class ="pointer" height="45" width="45">
-            </a>
-            <a class="navbar-brand py-0" href="#">
-                <img src="https://img.icons8.com/officexs/16/000000/appointment-reminders.png"/>
-            </a>
-
+            <div class="d-flex justify-content-start">
+                <a class="navbar-brand py-0" href="/">
+                    <img src="{{asset('/gif.png')}}" alt="خانه" class ="pointer" height="45" width="45">
+                </a>
+                <a class="navbar-brand py-2" href="#">
+                    <img src="https://img.icons8.com/officexs/16/000000/appointment-reminders.png"/>
+                    <small class="s-f">1</small>
+                </a>
+            </div>
             <button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navbarSupportedContent-555" aria-controls ="navbarSupportedContent-555" aria-expanded ="false" aria-label ="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse text-right" id="navbarSupportedContent-555">
                 <ul class="navbar-nav mr-auto">
                     

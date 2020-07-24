@@ -18,11 +18,19 @@ class GoodsRepository extends BaseRepository implements GoodsRepositoryInterface
         parent::setModel($model);
     }
 
-    public function join_goods_users()
+    public function get_goods_data($image_id)
     {
         return  DB::table('goods')
         ->join('users', 'goods.user_id', '=', 'users.id')
-        ->select('users.first_name','users.last_name','users.email','goods.id','goods.name','goods.price','goods.img_src','goods.created_at')
+        ->select('users.first_name','users.last_name','users.email','users.phone_number','goods.id','goods.name','goods.price','goods.img_src','goods.post_id', 'goods.created_at')
+        ->Where('goods.id', $image_id)
+        ->first();
+    }
+
+    public function get_all_goods_data() {
+        return  DB::table('goods')
+        ->join('users', 'goods.user_id', '=', 'users.id')
+        ->select('users.first_name','users.last_name','users.email','goods.id','goods.name','goods.price','goods.img_src','goods.post_id', 'goods.created_at')
         ->get();
     }
 
