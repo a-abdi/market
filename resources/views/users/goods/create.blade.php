@@ -5,12 +5,11 @@
 @endsection
 
 @section('styles')
-<link rel="stylesheet" href="{{asset('css/profile/profile.css')}}">
+<link rel="stylesheet" href="{{asset('css/user/goods/create.css')}}">
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/profile/profile.js')}}"></script>
-<script src="{{asset('js/main/show_image.js')}}"></script>
+<script src="{{asset('js/user/goods/create.js')}}"></script>
 @endsection
 
 @section('content') 
@@ -25,14 +24,14 @@
                     <input type="number" min="0" step="1" max="99999999" class="form-control text-right" id="price" placeholder="قیمت کالا">
                 </div>
                 <div class="col-md-4 my-1 text-center">
-                    <input class="border rounded w-100" type="file" onchange="readURL(this);" id="file" >
+                    <input class="border rounded w-100" type="file" onchange="preview_input_file(this);" id="file" >
                 </div>
-                <div class="col-12 text-center my-1" id="image_preview">
-                    <img id="blah" src="" class="d-none" alt="your image"/>
+                <div class="col-12 text-center my-1">
+                    <img src="" class="d-none" alt="your image" id="image_preview"/>
                         <!-- show image preview -->
                 </div>
                 <div class="col-12 my-1 text-center">
-                    <button type="button" onclick="save_good({{Session::get('user_id')}})" class="btn btn-primary">
+                    <button type="button" onclick="create_goods({{Session::get('user_id')}})" class="btn btn-primary">
                         ارسال
                     </button>
                 </div>

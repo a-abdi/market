@@ -5,11 +5,11 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('js/goods/comments.js')}}"></script>
+    <script src="{{asset('js/main/comment.js')}}"></script>
 @endsection
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/image/image.css')}}">
+    <link rel="stylesheet" href="{{asset('css/goods/information.css')}}">
 @endsection
 
 @section('content') 
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 @if(session('user_phone_number'))
-                                    <button class="btn btn-primary d-rtl" onclick="open_comments_view('create_comment', {{$goods->post_id}})">
+                                    <button class="btn btn-primary d-rtl" onclick="open_comments_view('create_comment', {{$goods->id}})">
                                         افزودن نظر جدید
                                     </button>
                                 @endif

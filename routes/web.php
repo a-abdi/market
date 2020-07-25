@@ -24,12 +24,12 @@ Route::post('/users/login','UsersAuthController@users_login');
 Route::post('/users/register','UsersAuthController@users_register');
 
 Route::get('/posts/{post_id}/comments', 'UsersController@comments_view');
-Route::get('/users/{user_id}/goods/create','UsersController@users_create_goods_index');
+Route::get('/users/{user_id}/goods/create','UsersController@users_goods_create_index');
 Route::get('/users/{user_id}/exit','UsersController@user_exit');
 Route::get('/users/{user_id}/profile','UsersController@user_profile');
 Route::get('/users/{user_id}/ordering/new','UsersController@user_ordering_new');
 Route::get('/users/{user_id}/goods','UsersController@get_user_goods');
-Route::post('/users/{user_id}/goods/create','UsersController@users_create_goods');
+Route::post('/users/{user_id}/goods/create','UsersController@users_goods_create');
 Route::post('/posts/{post_id}/comments/create','UsersController@comments_create');
 
 // admin

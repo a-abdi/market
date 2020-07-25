@@ -1,7 +1,3 @@
-function exit(){
-    alert("Hello! I am an alert box!!");
-}
-
 function enabel_shadow(elment)
 {
     
@@ -38,3 +34,25 @@ function get_cookie(cname) {
     }
     return "";
 }
+
+
+function preview_input_file(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+  
+        reader.onload = function (e) {
+            $('#image_preview')
+              .attr('src', e.target.result);
+            $("#image_preview")
+              .addClass("d-inline");
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// If The Format Was Persian Return True
+function just_persian(str) {
+    var p = /^[\u0600-\u06FF\s]+$/;
+    return p.test(str);
+}
+ 

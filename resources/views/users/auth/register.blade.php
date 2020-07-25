@@ -5,7 +5,7 @@
 @endsection
 
 @section('styles')
-<link rel="stylesheet" href="{{asset('css/auth/register.css')}}">
+<link rel="stylesheet" href="{{asset('css/user/auth/register.css')}}">
 @endsection
 
 @section('scripts')

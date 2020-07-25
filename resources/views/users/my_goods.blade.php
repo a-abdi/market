@@ -1,3 +1,21 @@
+@extends('layouts.users.main')
+
+
+@section('title')
+    user_goods
+@endsection
+
+
+@section('styles')
+
+@endsection
+
+
+@section('scripts')
+
+@endsection
+
+@section('content') 
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-12 col-sm-8 col-md-10 px-0">
@@ -89,4 +107,4 @@
         </div>
     </div>
 </div>
-{{ $slot }}
+@endsection

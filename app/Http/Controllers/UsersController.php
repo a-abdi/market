@@ -32,13 +32,13 @@ class UsersController extends Controller
         $this->user = $user;
     }
 
-    public function users_create_goods_index() 
+    public function users_goods_create_index() 
     {
         Cookie::queue('user_id', session()->get('user_id'));
         return view('users.goods.create');
     }
 
-    public function users_create_goods(UserCreateGoodsRequest $request) 
+    public function users_goods_create(UserCreateGoodsRequest $request) 
     {    
         $img_src = SharedModel::store_file($request->file('image'), 'images', 'public');
         $good = SharedModel::create_object_good($request, $img_src);
@@ -88,7 +88,7 @@ class UsersController extends Controller
         //     ->where('user_id', $user_id)
         //     ->paginate(5);
         // // dd($data);
-        return view('users.goods', ['data'=>$goods]);
+        return view('users.my_goods', ['data'=>$goods]);
     }
 
 }
