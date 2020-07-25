@@ -26,7 +26,7 @@ function delete_good(good_id)
             params:{ id: good_id }
             
         }).then(function(response) {
-            $('#'+ good_id +'').remove();
+            $('#'+ good_id ).remove();
             
         }).catch(function(error) {
             
@@ -34,11 +34,11 @@ function delete_good(good_id)
     }
 }
 
-function details_image(id)
+function details_goods(goods_id)
 {
-    window.location.href = "/image/"+ id +"";
+    window.location.href = "/goods/"+ goods_id;
 }
 
-function users(id) {
-    window.location.href = "/admin/users/"+id+"";
+function users(user_id) {
+    window.location.href = "/admin/users/"+ user_id;
 }

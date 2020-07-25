@@ -107,10 +107,7 @@
                 <div id="create_comment"></div>
                 <div id="new_comments_view"></div>
                 <div id="commments_view"></div>
-                @foreach ($comments as $comment)
-                    @component('goods.components.comment', ['comment'=>$comment])
-                    @endcomponent
-                @endforeach
+                <!--  -->
             </div>
         </div>
     </div>

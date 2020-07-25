@@ -1,6 +1,5 @@
 $(document).ready(function(x) {
-  alert(x);
-    comments_view(x)
+  
 })
 
 

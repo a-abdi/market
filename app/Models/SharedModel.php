@@ -38,21 +38,20 @@ class SharedModel
         return 'storage/'.$file->store($sub_address, $address);
     }
 
-    public function create_object_good($request, $img_src, $post_id)
+    public function create_object_good($request, $img_src)
     {
         $good = new \stdClass();
         $good->name = $request->input('name');
         $good->price = $request->input('price');
         $good->user_id = session('user_id');
         $good->img_src = $img_src;
-        $good->post_id = $post_id;
         return $good;
     }
 
     public function goods_select_except($except)
     {
         $columns = array(
-            'price', 'name','user_id', 'id', 'img_src', 'post_id', 'created_at', 'updated_at'
+            'price', 'name','user_id', 'id', 'img_src', 'created_at', 'updated_at'
         );
         return array_diff( $columns, (array) $except );
     }

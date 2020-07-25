@@ -17,8 +17,6 @@
 
 
 @section('content')
-    @grid()
-        @component('admin.components.users_about',['users' => $users])
+        @component('components.admin.users_about',['users' => $users])
         @endcomponent
-    @endgrid
 @endsection

@@ -27,8 +27,5 @@ class AppServiceProvider extends ServiceProvider
     {
         app()->setLocale('fa');
         Schema::defaultStringLength(191);
-        Blade::component('layouts.components.grid', 'grid');
-        Blade::component('admin.components.goodstable', 'admin_goods_table');
-
     }
 }

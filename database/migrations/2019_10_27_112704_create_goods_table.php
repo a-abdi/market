@@ -19,7 +19,6 @@ class CreateGoodsTable extends Migration
             $table->string('name',128);
             $table->string('img_src',64);
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('post_id');
             $table->timestamps();
         });
     }

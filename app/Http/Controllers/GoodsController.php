@@ -3,30 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Facades\App\Models\SharedModel;
-use App\Contracts\Repositories\UserRepositoryInterface;
 use App\Contracts\Repositories\GoodsRepositoryInterface;
-use App\Contracts\Repositories\CommentRepositoryInterface;
-
 
 class GoodsController extends Controller
 {
-    protected $good;
-    protected $comment;
-    public function __construct(GoodsRepositoryInterface $good, CommentRepositoryInterface $comment) 
+    protected $goods;
+    public function __construct(GoodsRepositoryInterface $goods) 
     {
-        $this->good = $good;
-        $this->comment = $comment;
+        $this->goods = $goods;
     }
 
-    public function goods_view(Request $request, $image_id) {
-        if(!$this->good->find($image_id)) {
+    public function goods_view(Request $request, $goods_id) {
+        if(!$this->goods->find($goods_id)) {
             abort(404);       
-        }   
-        $goods = $this->good->get_goods_data($image_id);
-        $comments = $this->comment->get_comments_data($goods->post_id);
-        SessionModel::refresh_session();
-        SessionModel::user_set_session($goods->post_id);
-        return view('goods.information',compact('comments', 'goods'));
+        }  
+        return view('goods.information', [ 'goods' => $this->goods->get_goods_information($goods_id) ]);
     }
 }

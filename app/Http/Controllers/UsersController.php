@@ -40,13 +40,8 @@ class UsersController extends Controller
 
     public function users_create_goods(UserCreateGoodsRequest $request) 
     {    
-        $post = new Post();
-        $post->title = $request->get('name');
-        $post->user_id = session('user_id');
-        $post->type = 'goods';
-        $post->save();
         $img_src = SharedModel::store_file($request->file('image'), 'images', 'public');
-        $good = SharedModel::create_object_good($request, $img_src, $post->id);
+        $good = SharedModel::create_object_good($request, $img_src);
         $new_good = $this->good->create((array) $good);
 
     }

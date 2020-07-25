@@ -19,12 +19,10 @@
 
 
 @section('content')
-   @grid()
-        @component('admin.components.tab_search_goods')
+        @component('components.tab_search_goods')
         @endcomponent
-    @endgrid
-        @admin_goods_table(['data' => $data])
-        @endadmin_goods_table
+        @component('components.admin.goods_table', [ 'data' => $data ])
+        @endcomponent
 @endsection
 
 

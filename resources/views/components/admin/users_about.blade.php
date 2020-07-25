@@ -20,7 +20,7 @@
                 <div class="col-12 py-2">
                    <hr>
                 </div>
-                @component('layouts.components.users_action')
+                @component('components.admin.users_action')
                     <h4>تمام فعالیت کاربر را نشان می دهد</h4>
                 @endcomponent
             </div>
