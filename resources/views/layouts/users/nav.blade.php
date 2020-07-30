@@ -26,8 +26,7 @@
             </div>
         </div>
     </nav>
-@else
-        
+@else        
     <!--Navbar -->
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container-fluid mx-4">
@@ -35,10 +34,21 @@
                 <a class="navbar-brand py-0" href="/">
                     <img src="{{asset('/gif.png')}}" alt="خانه" class ="pointer" height="45" width="45">
                 </a>
-                <a class="navbar-brand py-2" href="#">
+                <div class="dropdown ">
+                    <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://img.icons8.com/officexs/16/000000/appointment-reminders.png"/>
+                        <span class="s-f">1</span>
+                    </button>
+                    <div class="dropdown-menu d-rtl text-right" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button">Action</button>
+                        <button class="dropdown-item" type="button">Another action</button>
+                        <button class="dropdown-item" type="button">Something else here</button>
+                    </div>
+                </div>
+                <!-- <a class="navbar-brand py-2" href="#">
                     <img src="https://img.icons8.com/officexs/16/000000/appointment-reminders.png"/>
                     <small class="s-f">1</small>
-                </a>
+                </a> -->
             </div>
             <button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navbarSupportedContent-555" aria-controls ="navbarSupportedContent-555" aria-expanded ="false" aria-label ="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -71,7 +81,7 @@
                         <a class="nav-link" id="id_2" onmouseover="enabel_shadow(this)" onmouseout="disable_shadow(this)" href="/users/{{Session::get('user_id')}}/goods/create">ثبت آگهی</a>
                     </li>
                     <li class="nav-item avatar dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="https://img.icons8.com/fluent/48/000000/user-male-circle.png" class="rounded-circle z-depth-0" alt="avatar image" width="40" height="40">
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary text-right" aria-labelledby="navbarDropdownMenuLink-55">

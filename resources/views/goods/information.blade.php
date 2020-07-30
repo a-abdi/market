@@ -6,6 +6,7 @@
 
 @section('scripts')
     <script src="{{asset('js/main/comment.js')}}"></script>
+    <script src="{{asset('js/goods/information.js')}}"></script>
 @endsection
 
 @section('styles')
@@ -96,7 +97,7 @@
                                     </div>
                                 </div>
                                 @if(session('user_phone_number'))
-                                    <button class="btn btn-primary d-rtl" onclick="open_comments_view('create_comment', {{$goods->id}})">
+                                    <button class="btn btn-primary d-rtl" onclick="open_goods_comments_view('create_comment_id','comment_body_id', {{$goods->id}})">
                                         افزودن نظر جدید
                                     </button>
                                 @endif
@@ -104,9 +105,9 @@
                         </div>
                     </div>
                 </div>
-                <div id="create_comment"></div>
-                <div id="new_comments_view"></div>
-                <div id="commments_view"></div>
+                <div id="create_comment_id"></div>
+                <div id="new_comments_view_id"></div>
+                <div class="my-2" id="comments_view_id"> </div>
                 <!--  -->
             </div>
         </div>

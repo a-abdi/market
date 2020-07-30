@@ -56,3 +56,37 @@ function just_persian(str) {
     return p.test(str);
 }
  
+// function duration(timeStart) {
+//     var today = new Date();
+//     var end_dd = today.getDate();
+//     var end_mm = today.getMonth()+1; //January is 0!
+//     var end_yyyy = today.getFullYear();
+
+//     var strat_dd = timeStart.getDate();
+//     var strat_mm = timeStart.getMonth();
+//     var strat_yyyy = timeStart.getFullYear();
+
+//     var duration_dd = end_dd - strat_dd;
+//     var duration_mm = end_mm - strat_mm;
+//     var duration_yyyy = end_yyyy-strat_yyyy;
+//     if(duration_yyyy > 0)
+//         return "سال قبل:" +  duration_yyyy;
+//     else if(duration_mm > 0)
+//         return " ماه قبل:" + duration_mm;
+//     else if(duration_dd > 0)
+//         return " روز قبل:" + duration_dd;
+//     return "همین حالا:";    
+
+    // if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = dd+'/'+mm+'/'+yyyy;  //Current Date
+
+    // var valuestart ="8:00 AM";
+    // var valuestop = "4:00 PM";//$("select[name='timestop']").val();
+
+    // //create date format  
+    // var timeStart = new Date(today + "" + valuestart).getHours();
+    // var timeEnd = new Date(today + "" + valuestop).getHours();
+
+    // var hourDiff = timeEnd - timeStart;  
+    // alert("duration:"+hourDiff);
+
+// }

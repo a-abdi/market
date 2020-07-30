@@ -44,7 +44,7 @@
                                     <div class="card border-0">
                                         <div class="row no-gutters">
                                             <div class="col-md-4 col-lg-4 col-xl-3">
-                                                <small> نظرات و سوالات در مورد کالا<span class="glyphicon glyphicon-envelope"></span></small>
+                                                <small> نظرات و سوالات در مورد آگهی<span class="glyphicon glyphicon-envelope"></span></small>
                                                 <img src="/{{$user->img_src}}" class="card-img" alt="{{$user->name}}" width="150rem" height="150rem">
                                                 <small>امتیاز</small>
                                             </div>

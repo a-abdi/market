@@ -45,7 +45,7 @@ function show_all_goods(goods, id){
 
 function get_goods_information(goods_id) {
     // $(location).attr('href','login');
-    window.location.href = "/goods/"+ goods_id ;
+    window.location.href = "/goods/" + goods_id ;
     //param
     //  /search/user_id/1/good_id/4
     //string

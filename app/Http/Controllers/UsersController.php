@@ -3,15 +3,8 @@
 namespace App\Http\Controllers;
 
 use Cookie;
-use App\Models\Post;
-use App\Models\User;
-use App\Models\Good;
-use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Repositories\Repository;
-use Illuminate\Support\Facades\DB;
 use Facades\App\Models\SharedModel;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserCreateGoodsRequest;
 use App\Contracts\Repositories\UserRepositoryInterface;
 use App\Contracts\Repositories\GoodsRepositoryInterface;
@@ -57,23 +50,6 @@ class UsersController extends Controller
 
     public function user_ordering_new(){
         return view('users/odering/new');
-    }
-
-    public function comments_view(){
-        
-    }
-
-    public function comments_create(Request $request, $post_id){
-        $comment = new Comment();
-        $comment->parent_id = $request->get('parent_id');
-        $comment->body = $request->get('comment_body');
-        $comment->user_id = session('user_id');
-        $comment->post_id = $post_id;
-        $comment->save();
-        $last_comment = $this->comment->get_comments_data($comment->post_id)->last();
-        return response()->json([
-            'comment'=>$last_comment
-        ]);
     }
 
     public function get_user_goods($user_id) 

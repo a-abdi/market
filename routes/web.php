@@ -14,23 +14,23 @@
 
 // user
 Route::get('/','HomeController@index')->name('home');
-Route::get('/goods','HomeController@goods');
 
-Route::get('/goods/{goods_id}','GoodsController@goods_view');
+Route::get('/goods','HomeController@goods');
+Route::get('/goods/{goods_id}','GoodsController@goods_information_view');
+Route::get('/goods/{goods_id}/comments', 'CommentsController@goods_comments_view');
+Route::post('/goods/{goods_id}/comment/create','CommentsController@goods_comments_create');
 
 Route::get('/users/login','UsersAuthController@users_login_index')->name('login');
 Route::get('/users/register','UsersAuthController@users_register_index')->name('register');
 Route::post('/users/login','UsersAuthController@users_login');
 Route::post('/users/register','UsersAuthController@users_register');
 
-Route::get('/posts/{post_id}/comments', 'UsersController@comments_view');
 Route::get('/users/{user_id}/goods/create','UsersController@users_goods_create_index');
 Route::get('/users/{user_id}/exit','UsersController@user_exit');
 Route::get('/users/{user_id}/profile','UsersController@user_profile');
 Route::get('/users/{user_id}/ordering/new','UsersController@user_ordering_new');
 Route::get('/users/{user_id}/goods','UsersController@get_user_goods');
 Route::post('/users/{user_id}/goods/create','UsersController@users_goods_create');
-Route::post('/posts/{post_id}/comments/create','UsersController@comments_create');
 
 // admin
 Route::get('/admin/auth/login','AdminAuthController@login_index');
